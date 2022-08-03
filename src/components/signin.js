@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import {auth} from '../firebase'
+import loginPicture from '../assets/loginPicture.png';
 
 const SignIn = () => {
     const emailRef = useRef(null)
@@ -17,15 +18,29 @@ const SignIn = () => {
         })
     }
     return (
-        <div className='signin'>
-            <form action=''>
-                <h1>signin</h1>
-                <input ref={emailRef}type="email"></input>
-                <input ref={passwordRef} type='password'></input>
-                <button onClick={signIn}>Submit</button>
-            </form>
-            sIGNin
-        </div>
+        <>
+        <div class="login-page-container">
+	<div class="login-page-left">
+
+        <img src={loginPicture} alt='Login Picture Image'/>
+    
+    </div>
+	<div class="login-page-right">
+        <form action=''>
+                <h1>Login</h1>
+                <div className='login-form-container'>
+                    <label>Email </label>
+                <input ref={emailRef}type="email" placeholder='Email'></input>
+                <label>
+                Password </label>
+                <input ref={passwordRef} type='password' placeholder='Password'></input>
+                
+                <button onClick={signIn}>Login</button>
+                </div>
+        </form>
+    </div>
+</div>
+        </>
     )
 }
 
