@@ -1,0 +1,77 @@
+.sidebar {
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 320px;
+    background-color: #93B4EA;
+}
+
+.sidebar__logo {
+    display: grid;
+    place-items: center;
+    height: 120px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Mochiy Pop P one', sans-serif;
+}
+
+.sidebar__menu {
+    position: relative;
+}
+
+.sidebar__menu__item {
+    display: flex;
+    align-items: center;
+    place-content: flex-start;
+    padding: 1rem 3rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #555555;
+    transition: color 0.3s ease-in-out;
+}
+
+.active {
+    color: #fff;
+}
+
+.sidebar__menu__item__icon {
+    margin-right: 1rem;
+    /* width: 20px; */
+}
+
+.sidebar__menu__item i {
+    width: 1rem;
+    font-size: 1.75rem;
+    color: black;
+}
+
+
+.sidebar__menu__indicator {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: calc(100% - 40px);
+    border-radius: 10px;
+    background-color: #FFE38F;
+    z-index: -1;
+    transform: translateX(-50%);
+    transition: 0.3s ease-in-out;
+}
+
+
+.sidebar button {
+    width: calc(100% - 40px);
+    bottom: 5%;
+    left: 20px;
+    position: absolute;
+    align-items: center;
+    margin: 0 auto;
+    border: none;
+    color: white;
+    background: #D04C4C;
+    border-radius: 8px;
+    padding: 10px 32px;
+}
