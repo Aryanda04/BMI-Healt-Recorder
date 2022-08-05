@@ -1,13 +1,13 @@
 // import {auth} from '../firebase'
 
-const Profile = () => {
+const History = () => {
     return (
         <>
-    <div>PROFILE PAGE</div>;
+    <div>HISTORY PAGE</div>;
     {/* <button onClick={()=>auth.signOut()}>Logout</button> */}
         </>
     )
 
 };
 
-export default Profile;
+export default History;
