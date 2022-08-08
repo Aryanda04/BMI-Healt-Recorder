@@ -23,28 +23,37 @@ const History = () => {
     ]
     return (
         <>
-    <div>HISTORY PAGE</div>;
+        <div className="riwayatContainer">
+
+    <h1>RIWAYAT PENGUKURAN</h1>
     <section className="riwayatPengukuran">
 
     {
         riwayatPengukuran.map((item) => (
             <div className="riwayatCard">
+                <div className="left">
+
                             <h2 >
                                 {item.nama}
                             </h2>
-                            <h2>
-                                {item.umur}
-                            </h2>
-                            <div className=''>
+                            <h4>
+                                {item.umur} Tahun
+                            </h4>
+                </div>
+                <div className="right">
+                    <h5>Berat Badan : 
                                 {item.beratBadan}
-                                <br></br>
+                    </h5>
+                    <h5>
+                Tinggi Badan : 
                                 {item.tinggiBadan}
-                            </div>
-                        </div>
+                    </h5>
+                            </div>                </div>
                     ))
                 }
     {/* <button onClick={()=>auth.signOut()}>Logout</button> */}
                 </section>
+                </div>
         </>
     )
 

@@ -28,6 +28,7 @@
 }
 
 .login-page-right h1 {
+    text-align: center;
     margin-bottom: 1rem;
     font-family: 'Rubik';
     font-style: normal;
