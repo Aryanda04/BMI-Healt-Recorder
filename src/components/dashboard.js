@@ -2,7 +2,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AppLayout from './layout/layoutComponent';
 import Blank from './blank'
-import Profile from './profile';
+import Profil from './profil';
+import History from './history';
 
 function Dashboard() {
   return (
@@ -12,8 +13,8 @@ function Dashboard() {
               
                 <Route path='/' element={<AppLayout />}>
                     <Route index element={<Blank />} />
-                    <Route path='/profile' element={ <Profile/>} />
-                    <Route path='/riwayat' element={<Blank />} />
+                    <Route path='/profile' element={ <Profil/>} />
+                    <Route path='/riwayat' element={<History/>} />
                 </Route>
             </Routes>
         </BrowserRouter>

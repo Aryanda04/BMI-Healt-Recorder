@@ -15,7 +15,7 @@ const sidebarNavItems = [
         section: ''
     },
     {
-        display: 'Profile',
+        display: 'Profil',
         icon: <Icon icon="bx:user" />,
         to: '/profile',
         section: 'profile'
