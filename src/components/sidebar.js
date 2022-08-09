@@ -25,6 +25,12 @@ const sidebarNavItems = [
     to: "/riwayat",
     section: "riwayat",
   },
+  {
+    display: "Pengukuran",
+    icon: <Icon icon="ic:baseline-history" />,
+    to: "/pengukuran",
+    section: "pengukuran",
+  },
 ];
 
 const Sidebar = () => {

@@ -1,106 +1,178 @@
-// import {auth} from '../firebase'
 import { Link } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import React, { useEffect, useState } from "react";
-import puskesmasImg from "../../assets/puskesmas-assets.jpg";
-import { writeUserData } from "../../firebase";
+import React from "react";
+import { ref, set, child, get, getDatabase } from "firebase/database";
 
-const Profil = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [profile, setProfile] = useState("");
+import { db, auth } from "../../firebase";
 
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // console.log(uid);
-      // ...
-    } else {
-      // User is signed out
-      // ...
+export class Profil extends React.Component {
+  // console.log(db);
+  constructor(props) {
+    super(props);
+    this.state = {
+      db: "",
+      id: "",
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      profile_picture: "",
+    };
+    this.interface = this.interface.bind(this);
+  }
+  componentDidMount() {
+    this.setState({
+      db: db,
+      id: auth.currentUser.uid,
+    });
+  }
+  interface(e) {
+    const id = e.target.id;
+    if (id === "addBtn") {
+      this.insertData();
+    } else if (id === "selectBtn") {
+      this.selectData();
     }
-  });
-  return (
-    <>
-      <div className="profilContainer">
-        <h1>Profil</h1>
+  }
+  getAllInputs() {
+    return {
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      address: this.state.address,
+      profile_picture: this.state.profile_picture,
+    };
+  }
+  insertData() {
+    const db = this.state.db;
+    const id = this.state.id;
+    const data = this.getAllInputs();
 
-        <div className="profilShow">
+    set(ref(db, "puskesmas/users/" + id + "/profil/"), {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+      profile_picture: data.profile_picture,
+    })
+      .then(() => {
+        this.selectData();
+
+        alert("data added success");
+      })
+      .catch((error) => {
+        alert("there was an error, details: " + error);
+      });
+  }
+  selectData() {
+    const dbRef = ref(this.state.db);
+    const id = this.state.id;
+
+    get(child(dbRef, "puskesmas/users/" + id + "/profil/"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          this.setState({
+            name: snapshot.val().name,
+            email: snapshot.val().email,
+            phone: snapshot.val().phone,
+            address: snapshot.val().address,
+            profile_picture: snapshot.val().profile_picture,
+          });
+        } else {
+          alert("no data found");
+        }
+      })
+      .catch((error) => {
+        alert("error" + error);
+      });
+  }
+
+  render() {
+    return (
+      <>
+        <div className="profilContainer">
           <div className="profilPict-Container">
             <img
-              src={puskesmasImg}
+              src={this.state.profile_picture}
               className="profillPict"
               alt="profilePicture"
             />
           </div>
           <div className="profilDetail-Container">
             <h2>Nama Puskesmas</h2>
-            <h4> Puskesmas Kelurahan Grogol Selatan</h4>
+            {this.state.name}
             <h2>Aalamat</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <p>{this.state.address}</p>
             <h2>Kontak</h2>
-            <h4>No HP : </h4>
-            <h4>Email : </h4>
+            <h4>No HP : {this.state.phone}</h4>
+            <h4>Email : {this.state.email}</h4>
           </div>
         </div>
-        <form action="">
-          <h1>Username</h1>
+
+        <Link to="/editProfile">Edit Profil</Link>
+
+        <div className="profilShow">
           <div className="login-form-container">
-            <label>Username </label>
+            <label>Nama </label>
             <input
               type="text"
               placeholder="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={this.state.name}
+              id="name"
+              onChange={(e) => {
+                this.setState({ name: e.target.value });
+              }}
             ></input>
             <label>Email </label>
             <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={this.state.email}
+              id="email"
+              onChange={(e) => {
+                this.setState({ email: e.target.value });
+              }}
               type="email"
               placeholder="Email"
             ></input>
-            <label>Address </label>
+            <label>Alamat </label>
             <input
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              value={this.state.address}
+              id="address"
+              onChange={(e) => {
+                this.setState({ address: e.target.value });
+              }}
               type="text"
-              placeholder="text"
+              placeholder="Phone"
             ></input>
-            <label>Profile </label>
+            <label>Phone </label>
+
             <input
-              value={profile}
-              onChange={(e) => setProfile(e.target.value)}
+              value={this.state.phone}
+              id="phone"
+              onChange={(e) => {
+                this.setState({ phone: e.target.value });
+              }}
               type="text"
-              placeholder="text"
+              placeholder="Alamat"
+            ></input>
+            <label>Foto Profil </label>
+            <input
+              value={this.state.profile_picture}
+              id="profilePicture"
+              onChange={(e) => {
+                this.setState({ profile_picture: e.target.value });
+              }}
+              type="text"
+              placeholder="Image URL"
             ></input>
 
-            <button
-              onClick={(e) =>
-                writeUserData(username, email, profile, address, e)
-              }
-            >
+            <button id="addBtn" onClick={this.interface}>
               Simpan
             </button>
+            <button id="selectBtn" onClick={this.interface}>
+              Select
+            </button>
           </div>
-        </form>
-
-        <Link to="/editProfile">Edit Profil</Link>
-      </div>
-    </>
-  );
-};
-
-export default Profil;
+        </div>
+      </>
+    );
+  }
+}
