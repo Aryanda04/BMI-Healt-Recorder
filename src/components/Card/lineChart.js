@@ -7,28 +7,41 @@ export default function CardLineChart() {
       type: "line",
       data: {
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
         ],
         datasets: [
           {
-            label: new Date().getFullYear(),
+            label: "index-2",
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: [65, 78, 66, 44, 56, 67, 75],
+            data: [
+              40, 30, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180,
+              180, 160, 150,
+            ],
             fill: false,
           },
           {
-            label: new Date().getFullYear() - 1,
+            label: "index-1",
             fill: false,
             backgroundColor: "#fff",
             borderColor: "#fff",
-            data: [40, 68, 86, 74, 56, 60, 87],
+            data: [30, 40, 50, 60, 70, 80, 90, 10, 130, 140],
           },
         ],
       },
@@ -59,12 +72,12 @@ export default function CardLineChart() {
           xAxes: [
             {
               ticks: {
-                fontColor: "rgba(255,255,255,.7)",
+                fontColor: "white",
               },
               display: true,
               scaleLabel: {
                 display: false,
-                labelString: "Month",
+                labelString: "Year",
                 fontColor: "white",
               },
               gridLines: {
@@ -86,7 +99,7 @@ export default function CardLineChart() {
               display: true,
               scaleLabel: {
                 display: false,
-                labelString: "Value",
+                labelString: "KiloGram",
                 fontColor: "white",
               },
               gridLines: {
@@ -115,7 +128,9 @@ export default function CardLineChart() {
               <h6 className="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
                 Overview
               </h6>
-              <h2 className="text-white text-xl font-semibold">Sales value</h2>
+              <h2 className="text-white text-xl font-semibold">
+                Grafik Kg/Usia
+              </h2>
             </div>
           </div>
         </div>
