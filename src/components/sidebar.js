@@ -31,6 +31,12 @@ const sidebarNavItems = [
     to: "/pengukuran",
     section: "pengukuran",
   },
+  {
+    display: "ProfilForm",
+    icon: <Icon icon="ic:baseline-history" />,
+    to: "/formprofil",
+    section: "formprofil",
+  },
 ];
 
 const Sidebar = () => {

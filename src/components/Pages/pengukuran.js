@@ -1,5 +1,5 @@
 // import {auth} from '../firebase'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { ref, set, child, get, update, remove } from "firebase/database";
@@ -7,110 +7,87 @@ import { ref, set, child, get, update, remove } from "firebase/database";
 import puskesmasImg from "../../assets/puskesmas-assets.jpg";
 import { writeUserData, db, auth } from "../../firebase";
 import convertLayerAtRulesToControlComments from "tailwindcss/lib/lib/convertLayerAtRulesToControlComments";
+const PengukuranForm = () => {
+  let navigate = useNavigate();
 
-export class Pengukuran extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: "",
-      db: "",
-      name: "",
-      tanggal_lahir: "",
-    };
-    this.interface = this.interface.bind(this);
-  }
-  componentDidMount() {
-    this.setState({
-      db: db,
-      id: auth.currentUser.uid,
-    });
-  }
+  let [fetchStatus, setFetchStatus] = useState(true);
 
-  render() {
-    return (
-      <>
-        <div className="profilShow">
-          <div className="login-form-container">
-            <label>Nama </label>
-            <input
-              type="text"
-              placeholder="Nama Lengkap"
-              value={this.state.name}
-              id="name"
-              onChange={(e) => {
-                this.setState({ name: e.target.value });
-              }}
-            ></input>
-            <label>Tanggal Lahir</label>
-            <input
-              value={this.state.tanggal_lahir}
-              id="tanggalLahir"
-              onChange={(e) => {
-                this.setState({ tanggal_lahir: e.target.value });
-              }}
-              type="date"
-              placeholder="Date"
-            ></input>
+  const [input, setInput] = useState({
+    name: "",
+    tanggal_lahir: "",
+  });
 
-            <button id="addBtn" onClick={this.interface}>
-              Simpan
-            </button>
-            <button id="selectBtn" onClick={this.interface}>
-              Select
-            </button>
-          </div>
-        </div>
-      </>
-    );
-  }
-  interface(e) {
-    const id = e.target.id;
-    if (id === "addBtn") {
-      this.insertData();
-    } else if (id === "selectBtn") {
-      this.selectData();
-    }
-  }
-  getAllInputs() {
-    return {
-      name: this.state.name,
-      tanggal_lahir: this.state.tanggal_lahir,
-    };
-  }
-  insertData() {
-    const db = this.state.db;
-    const id = this.state.id;
-    const name = this.state.name;
-    const data = this.getAllInputs();
-
-    set(ref(db, "puskesmas/users/" + id + "/pengukuran/" + name), {
-      name: data.name,
-      tanggal_lahir: data.tanggal_lahir,
-    })
-      .then(() => {
-        alert("data added success");
-      })
-      .catch((error) => {
-        alert("there was an error, details: " + error);
-      });
-  }
-  selectData() {
-    const dbRef = ref(this.state.db);
-    const id = this.state.id;
-
-    get(child(dbRef, "puskesmas/users/" + id))
+  useEffect(() => {
+    const dbRef = ref(db);
+    get(child(dbRef, `puskesmas/users/${auth.currentUser.uid}`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          this.setState({
-            name: snapshot.val().name,
-            tanggal_lahir: snapshot.val().tanggal_lahir,
+          const data = snapshot.val();
+          let result = data["pengukuran"];
+          console.log(result);
+          setInput({
+            name: result.name,
+            tanggal_lahir: result.tanggal_lahir,
           });
-        } else {
-          alert("no data found");
         }
+        return () => {
+          setInput({
+            name: "",
+            tanggal_lahir: "",
+          });
+        };
       })
       .catch((error) => {
-        alert("error" + error);
+        console.error(error);
       });
-  }
-}
+  }, []);
+  const handleChange = (e) => {
+    let value = e.target.value;
+    let name = e.target.name;
+
+    setInput({ ...input, [name]: value });
+  };
+  const writeUserData = (e) => {
+    e.preventDefault();
+    let { name, tanggal_lahir } = input;
+    set(ref(db, `puskesmas/users/${auth.currentUser.uid}/pengukuran/${name}`), {
+      name: name,
+      tanggal_lahir: tanggal_lahir,
+    });
+    navigate("/riwayat");
+    alert("berhasil menambahkan data");
+    setFetchStatus(true);
+  };
+
+  return (
+    <>
+      <div className="profilShow">
+        <div className="login-form-container">
+          <label>Nama </label>
+          <input
+            type="text"
+            placeholder="text"
+            value={input.name}
+            id="name"
+            onChange={handleChange}
+            name="name"
+          ></input>
+          <label>Tanggal Lahir</label>
+          <input
+            value={input.tanggal_lahir}
+            id="tanggalLahir"
+            onChange={handleChange}
+            type="date"
+            placeholder="Date"
+            name="tanggal_lahir"
+          ></input>
+          <button id="addBtn" onClick={writeUserData}>
+            Tambahkan
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default PengukuranForm;

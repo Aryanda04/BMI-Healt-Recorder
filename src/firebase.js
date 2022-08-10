@@ -24,8 +24,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// console.log(auth);
-// const userId = auth.currentUser.uid;
+
 const db = getDatabase(app);
 
 const logInWithEmailAndPassword = async (email, password, e) => {
@@ -40,55 +39,5 @@ const logInWithEmailAndPassword = async (email, password, e) => {
 const logout = () => {
   signOut(auth);
 };
-// const writeUserData = (name, email, imageUrl, address, e) => {
-//   e.preventDefault();
-//   // const user = auth.currentUser;
-//   // const userId = user.uid;
-//   // console.log(user);
-//   console.log(db);
-//   const db = getDatabase();
-//   set(ref(db, "/puskesmas/users/" + userId), {
-//     name: name,
-//     email: email,
-//     address: address,
-//     profile_picture: imageUrl,
-//   });
-// };
 
-// const dbRef = ref(getDatabase());
-// get(child(dbRef, `/puskesmas/users/` + userId))
-//   .then((snapshot) => {
-//     if (snapshot.exists()) {
-//       console.log(snapshot.val());
-//     } else {
-//       console.log("No data available");
-//     }
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
-
-// const starCountRef = ref(db, "/puskesmas/users" + userId);
-// onValue(starCountRef, (snapshot) => {
-//   const data = snapshot.val();
-//   updateStarCount(postElement, data);
-// });
-// db.ref("data").on("value", (snap) => {
-//   console.log(snap.val());
-// });
-// ref = db.ref("users/ada");
-// ref.once("value").then(function (snapshot) {
-//   var data = snapshot.child({ userId }).val(); // {first:"Ada",last:"Lovelace"}
-//   console.log(data);
-// });
-
-export {
-  auth,
-  db,
-  ref,
-  set,
-  // dbRef,
-  logInWithEmailAndPassword,
-  logout,
-  // writeUserData,
-};
+export { auth, db, ref, set, logInWithEmailAndPassword, logout };

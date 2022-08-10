@@ -6,8 +6,9 @@ import History from "./Pages/history";
 import Home from "./Pages/home";
 import ProfileForm from "./profileForm";
 import SignIn from "./signin";
-import { Profil } from "./Pages/profil";
-import { Pengukuran } from "./Pages/pengukuran";
+import PengukuranForm, { Pengukuran } from "./Pages/pengukuran";
+import Profil from "./Pages/profil";
+import ProfilForm from "./Form/profilForm";
 
 function Dashboard() {
   return (
@@ -18,7 +19,8 @@ function Dashboard() {
             <Route index element={<Home />} />
             <Route path="/profile" element={<Profil />} />
             <Route path="/riwayat" element={<History />} />
-            <Route path="/pengukuran" element={<Pengukuran />} />
+            <Route path="/pengukuran" element={<PengukuranForm />} />
+            <Route path="/formprofil" element={<ProfilForm />} />
           </Route>
         </Routes>
       </BrowserRouter>
