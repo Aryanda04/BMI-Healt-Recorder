@@ -39,7 +39,7 @@ const History = () => {
   return (
     <>
       <div className="riwayatContainer">
-        <h1>RIWAYAT PENGUKURAN</h1>
+        <h1>Riwayat Pengukuran</h1>
         <section className="riwayatPengukuran" id="riwayat-pengukuran">
           {arrDataPengukuran.map((item) => (
             <div className="riwayatCard">

@@ -1,0 +1,36 @@
+.pengukuranForm-container{
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(147, 180, 234, 0.3);
+    border-radius: 8px;
+}
+.pengukuranForm-container label{
+    margin: 1rem 0;
+    text-align: left;
+}
+.pengukuranForm-container input{
+    width: content;
+    background: #FFFFFF;
+    padding: 16px 12px;
+    border: 1px solid #93B4EA;
+    border-radius: 8px;
+}
+.pengukuranForm-container button{
+    cursor: pointer;
+    margin: 1rem 0;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0.8rem 0;
+    color: white;
+    background: #93B4EA;
+    border-radius: 8px;
+    border: none;
+}
+.pengukuranForm-container button:hover{
+    background: #FFE38F;
+
+}

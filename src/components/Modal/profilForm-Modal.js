@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import FocusTrap from "focus-trap-react";
-import Profil from "../Pages/profil";
 import ProfilForm from "../Form/profilForm";
 export const Modal = ({
   onClickOutside,
@@ -9,7 +8,6 @@ export const Modal = ({
   modalRef,
   buttonRef,
   closeModal,
-  onSubmit,
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -37,10 +35,7 @@ export const Modal = ({
               <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
             </svg>
           </button>
-          <div className="modal-body">
-            <ProfilForm onSubmit={closeModal} />
-            {/* <ProfilForm onSubmit={closeModal} />? */}
-          </div>
+          <ProfilForm onClick={closeModal} />
         </div>
       </aside>
     </FocusTrap>,

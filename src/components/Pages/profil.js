@@ -1,15 +1,14 @@
-import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { ref, onValue, child, get } from "firebase/database";
+import { ref, child, get } from "firebase/database";
 
 import { db, auth } from "../../firebase";
-import Container from "./profilForm-view";
+import ProfilFormBtn from "./profilForm-view";
 
 const Profil = () => {
   const [dataProfil, setDataProfil] = useState([]);
   let [fetchStatus, setFetchStatus] = useState(true);
 
-  const triggerText = "Open form";
+  const triggerText = "Edit Data";
   useEffect(() => {
     const dbRef = ref(db);
 
@@ -38,25 +37,29 @@ const Profil = () => {
   // console.log(dataProfil);
   return (
     <>
-      <div className="profilContainer">
-        <div className="profilPict-Container">
-          <img
-            src={dataProfil.profile_picture}
-            className="profillPict"
-            alt="profilePicture"
-          />
-        </div>
-        <div className="profilDetail-Container">
-          <h2>Nama Puskesmas</h2>
-          {dataProfil.name}
-          <h2>Aalamat</h2>
-          <p>{dataProfil.address}</p>
-          <h2>Kontak</h2>
-          <h4>No HP : {dataProfil.phone}</h4>
-          <h4>Email : {dataProfil.email}</h4>
+      <div className="dashboardContainer">
+        <h1>Informasi Puskesmas {dataProfil.name}</h1>
+        <div className="profilContainer">
+          <div className="profilPict-Container">
+            <img
+              src={dataProfil.profile_picture}
+              className="profillPict"
+              alt="profilePicture"
+            />
+          </div>
+          <div className="profilDetail-Container">
+            <h2>Puskesmas {dataProfil.name}</h2>
+
+            <h4>Alamat</h4>
+            <p>{dataProfil.address}</p>
+            <br></br>
+            <h4>Kontak</h4>
+            <p>No HP : {dataProfil.phone}</p>
+            <p>Email : {dataProfil.email}</p>
+          </div>
+          <ProfilFormBtn triggerText={triggerText} className="profilFormBtn" />
         </div>
       </div>
-      <Container triggerText={triggerText} />
     </>
   );
 };

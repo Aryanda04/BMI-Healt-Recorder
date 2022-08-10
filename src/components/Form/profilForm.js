@@ -64,12 +64,13 @@ const ProfilForm = () => {
     });
     navigate("/profile");
     alert("berhasil mengubah data");
+    window.location.reload(true);
     setFetchStatus(true);
   };
 
   return (
     <>
-      <div className="profilShow">
+      <div className="profilForm-container">
         <label>Nama </label>
         <input
           type="text"
@@ -78,15 +79,6 @@ const ProfilForm = () => {
           id="name"
           onChange={handleChange}
           name="name"
-        ></input>
-        <label>Email </label>
-        <input
-          value={input.email}
-          id="email"
-          onChange={handleChange}
-          type="email"
-          placeholder="Email"
-          name="email"
         ></input>
         <label>Alamat </label>
         <input
@@ -97,6 +89,16 @@ const ProfilForm = () => {
           placeholder="alamat"
           name="address"
         ></input>
+        <label>Email </label>
+        <input
+          value={input.email}
+          id="email"
+          onChange={handleChange}
+          type="email"
+          placeholder="Email"
+          name="email"
+        ></input>
+
         <label>Phone </label>
 
         <input
@@ -117,7 +119,7 @@ const ProfilForm = () => {
           name="profile_picture"
         ></input>
 
-        <button onClick={writeUserData}>Simpan</button>
+        <button onClick={writeUserData}>Simpan Perubahan </button>
       </div>
     </>
   );

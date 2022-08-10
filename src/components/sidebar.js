@@ -14,29 +14,29 @@ const sidebarNavItems = [
     section: "",
   },
   {
-    display: "Profil",
-    icon: <Icon icon="bx:user" />,
-    to: "/profile",
-    section: "profile",
+    display: "Information",
+    icon: <Icon icon="fluent:book-information-24-filled" />,
+    to: "/informasi",
+    section: "informasi",
   },
   {
-    display: "Riwayat",
+    display: "History",
     icon: <Icon icon="ic:baseline-history" />,
     to: "/riwayat",
     section: "riwayat",
   },
   {
     display: "Pengukuran",
-    icon: <Icon icon="ic:baseline-history" />,
+    icon: <Icon icon="akar-icons:person-add" />,
     to: "/pengukuran",
     section: "pengukuran",
   },
-  {
-    display: "ProfilForm",
-    icon: <Icon icon="ic:baseline-history" />,
-    to: "/formprofil",
-    section: "formprofil",
-  },
+  // {
+  //   display: "ProfilForm",
+  //   icon: <Icon icon="ic:baseline-history" />,
+  //   to: "/formprofil",
+  //   section: "formprofil",
+  // },
 ];
 
 const Sidebar = () => {

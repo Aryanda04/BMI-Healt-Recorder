@@ -61,8 +61,10 @@ const PengukuranForm = () => {
 
   return (
     <>
-      <div className="profilShow">
-        <div className="login-form-container">
+      <div className="dashboardContainer">
+        <h1>Mulai Pengukuran</h1>
+
+        <div className="pengukuranForm-container">
           <label>Nama </label>
           <input
             type="text"
