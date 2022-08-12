@@ -1,4 +1,5 @@
 // import {auth} from '../firebase'
+import age from "age-calculator";
 import React, { useEffect, useState } from "react";
 import { ref, set, child, get, update, remove } from "firebase/database";
 import { db, auth } from "../../firebase";
@@ -45,7 +46,7 @@ const History = () => {
             <div className="riwayatCard">
               <div className="left">
                 <h2>{item.name}</h2>
-                <h4>{item.tanggal_lahir} Tahun</h4>
+                <h4>{item.tanggal_lahir}</h4>
               </div>
               <div className="right">
                 <h5>Berat Badan : {item.beratBadan}</h5>
