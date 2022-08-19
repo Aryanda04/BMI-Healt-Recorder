@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "chart.js";
 
-export default function GrafikBBLakiLaki() {
+export default function GrafikTBLakiLaki() {
   React.useEffect(() => {
     var config = {
       type: "line",
@@ -75,12 +75,12 @@ export default function GrafikBBLakiLaki() {
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
             data: [
-              3.3, 4.5, 5.6, 6.4, 7.0, 7.5, 7.9, 8.3, 8.6, 8.9, 9.2, 9.4, 9.6,
-              9.9, 10.1, 10.3, 10.5, 10.7, 10.9, 11.1, 11.3, 11.5, 11.8, 12.0,
-              12.2, 12.4, 12.5, 12.7, 12.9, 13.1, 13.3, 13.5, 13.7, 13.8, 14.0,
-              14.2, 14.3, 14.5, 14.7, 14.8, 15.0, 15.2, 15.3, 15.5, 15.7, 15.8,
-              16.0, 16.2, 16.3, 16.5, 16.7, 16.8, 17.0, 17.2, 17.3, 17.5, 17.7,
-              17.8, 18.0, 18.2, 18.3,
+              49.9, 54.7, 58.4, 61.4, 63.9, 65.9, 67.6, 69.2, 70.6, 72.0, 73.3,
+              74.5, 75.7, 76.9, 78.0, 79.1, 80.2, 81.2, 82.3, 83.2, 84.2, 85.1,
+              86.0, 86.9, 87.8, 88.0, 88.8, 89.6, 90.4, 91.2, 91.9, 92.7, 93.4,
+              94.1, 94.8, 95.4, 96.1, 96.7, 97.4, 98.0, 98.6, 99.2, 99.9, 100.4,
+              101.0, 101.6, 102.2, 102.8, 103.3, 103.9, 104.4, 105.0, 105.6,
+              106.1, 106.7, 107.2, 107.8, 108.3, 108.9, 109.4, 110.0,
             ],
             fill: false,
           },
@@ -164,7 +164,7 @@ export default function GrafikBBLakiLaki() {
         },
       },
     };
-    var ctx = document.getElementById("line-chart").getContext("2d");
+    var ctx = document.getElementById("grafikTBLaki").getContext("2d");
     window.myLine = new Chart(ctx, config);
   }, []);
   return (
@@ -174,10 +174,10 @@ export default function GrafikBBLakiLaki() {
           <div className="flex flex-wrap items-center">
             <div className="relative w-full max-w-full flex-grow flex-1">
               <h6 className="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
-                Standar Berat Badan anak laki-laki menurut Umur
+                Standar Tinggi Badan anak laki-laki menurut Umur
               </h6>
               <h2 className="text-white text-xl font-semibold">
-                Grafik Kg/Bulan
+                Grafik Cm/Bulan
               </h2>
             </div>
           </div>
@@ -185,7 +185,7 @@ export default function GrafikBBLakiLaki() {
         <div className="p-4 flex-auto">
           {/* Chart */}
           <div className="relative h-350-px">
-            <canvas id="line-chart"></canvas>
+            <canvas id="grafikTBLaki"></canvas>
           </div>
         </div>
       </div>

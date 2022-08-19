@@ -3,6 +3,30 @@ import age from "age-calculator";
 import React, { useEffect, useState } from "react";
 import { ref, set, child, get, update, remove } from "firebase/database";
 import { db, auth } from "../../firebase";
+const handleStatus = (params) =>{
+  if(params==='Normal'){
+    return (
+      <>
+          <p id="statusNormal">{params}</p>
+      </>
+    )
+  }else if(params==='Obesitas'){
+    return (
+      <>
+          <p id="statusObesitas">{params}</p>
+      </>
+    )
+  }
+  else if(params==='Underweight'){
+    return (
+      <>
+          <p id="statusUnderweight">{params}</p>
+      </>
+    )
+  }
+
+
+}
 
 const History = () => {
   const [dataPengukuran, setDataPengukuran] = useState([]);
@@ -17,7 +41,7 @@ const History = () => {
           if (snapshot.exists()) {
             const data = snapshot.val();
             let result = data["pengukuran"];
-            console.log(result);
+            // console.log(result);
             setDataPengukuran(result);
           }
         })
@@ -45,16 +69,22 @@ const History = () => {
           {arrDataPengukuran.map((item) => (
             <div className="riwayatCard">
               <div className="left">
-                <h2>{item.name}</h2>
+                <h2><pre>{item.name}{handleStatus(item.Status)}</pre></h2>
                 <h4>{item.tanggal_lahir}</h4>
+                <h5>Waktu Pengukuran : {item.time}</h5>
+                <span>
+                
+                </span>
               </div>
               <div className="right">
-                <h5>Berat Badan : {item.beratBadan}</h5>
-                <h5>Tinggi Badan : {item.tinggiBadan}</h5>
+                <pre>
+                  <h5>Berat Badan  : {item.BeratBadan}  </h5>
+                  <h5>Tinggi Badan : {item.TinggiBadan}</h5>
+                  <h5>IMT          : {item.IMT}</h5>
+                </pre>
               </div>
             </div>
           ))}
-          ;
         </section>
       </div>
     </>
