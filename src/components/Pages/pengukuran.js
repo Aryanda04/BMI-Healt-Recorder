@@ -41,19 +41,35 @@ const PengukuranForm = () => {
         console.error(error);
       });
   }, []);
+
   const handleChange = (e) => {
     let value = e.target.value;
     let name = e.target.name;
 
     setInput({ ...input, [name]: value });
   };
+  const dateFormatter = (params, yearNow, monthNow) => {
+    const year = params.slice(0, 4);
+    const month = params.slice(5, 7);
+    return yearNow * 12 - year * 12 + (monthNow - month);
+  };
+
   const writeUserData = (e) => {
     e.preventDefault();
     let { name, tanggal_lahir } = input;
+    const d = new Date();
+    let bulan = d.getMonth() + 9;
+    let Tanggal = d.getDate();
+    let Tahun = d.getFullYear();
+    const idPengukuran = `${bulan}${Tanggal}${Tahun}`;
+    // console.log(bulan + "/" + Tanggal + "/" + Tahun);
+    const umurBulan = dateFormatter(tanggal_lahir, Tahun, bulan);
+
     set(ref(db, `puskesmas/users/${auth.currentUser.uid}/pengukuran/${name}`), {
       name: name,
       tanggal_lahir: tanggal_lahir,
     });
+
     navigate("/riwayat");
     alert("berhasil menambahkan data");
     setFetchStatus(true);
