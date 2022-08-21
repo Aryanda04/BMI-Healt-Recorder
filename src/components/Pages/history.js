@@ -24,15 +24,21 @@ const handleStatus = (params) => {
     );
   }
 };
+const handleDate = () => {
+  const d = new Date();
+  let bulanNow = "" + (d.getMonth() + 3);
+  let TanggalNow = "" + d.getDate();
+  let TahunNow = "" + d.getFullYear();
+  if (bulanNow.length < 2) bulanNow = "0" + bulanNow;
+  if (TanggalNow.length < 2) TanggalNow = "0" + TanggalNow;
+
+  return `${TahunNow}${bulanNow}${TanggalNow}`;
+};
 
 const History = () => {
   const [dataPengukuran, setDataPengukuran] = useState([]);
   let [fetchStatus, setFetchStatus] = useState(true);
   const arrDataPengukuran = [];
-  const d = new Date();
-  let bulanNow = d.getMonth() + 1;
-  let TanggalNow = d.getDate();
-  let TahunNow = d.getFullYear();
 
   useEffect(() => {
     const dbRef = ref(db);
@@ -63,12 +69,15 @@ const History = () => {
     arrSementaraDataPengukuran.push(dataPengukuran[name]);
 
     arrSementaraDataPengukuran.map((res) => {
-      const idPengukuran = `${bulanNow}${TanggalNow}${TahunNow}`;
+      const d = new Date();
+      let bulanNow = d.getMonth() + 3;
+      let TahunNow = d.getFullYear();
+      const idPengukuran = handleDate();
       const tahun = res.tanggal_lahir.slice(0, 4);
       const bulan = res.tanggal_lahir.slice(5, 7);
 
       const umurBulan = (TahunNow - tahun) * 12 + (bulanNow - bulan);
-      console.log(umurBulan);
+      // console.log(umurBulan);
       set(
         ref(
           db,
@@ -82,11 +91,15 @@ const History = () => {
   };
 
   const keys = Object.keys(dataPengukuran);
+  let arrKeyPengukuran = [];
   keys.forEach((key) => {
     arrDataPengukuran.push(dataPengukuran[key]);
+    const keys2 = Object.keys(dataPengukuran[key]).slice(0, -2);
+    arrKeyPengukuran.push(keys2);
+    // console.log(keys2);
   });
-  console.log(arrDataPengukuran);
-
+  // console.log(arrKeyPengukuran);
+  console.log("===========================");
   return (
     <>
       <div className="riwayatContainer">
@@ -102,12 +115,12 @@ const History = () => {
                   </pre>
                 </h2>
                 <h4>{item.tanggal_lahir}</h4>
-                <h5>Waktu Pengukuran : {item.umurBulan}</h5>
+                <h5>Waktu Pengukuran : {}</h5>
                 <span></span>
               </div>
               <div className="right">
                 <pre>
-                  <h5>Berat Badan : {item.BeratBadan} </h5>
+                  <h5>Berat Badan : {console.log(arrKeyPengukuran)} </h5>
                   <h5>Tinggi Badan : {item.TinggiBadan}</h5>
                   <h5>IMT : {item.IMT}</h5>
                 </pre>
