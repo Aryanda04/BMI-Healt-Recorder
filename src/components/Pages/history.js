@@ -3,6 +3,7 @@ import age from "age-calculator";
 import React, { useEffect, useState } from "react";
 import { ref, set, child, get, update, remove } from "firebase/database";
 import { db, auth } from "../../firebase";
+import GrafikBBLakiLaki from "../Card/garfikBBLaki";
 const handleStatus = (params) => {
   if (params === "Normal") {
     return (
@@ -33,6 +34,12 @@ const handleDate = () => {
   if (TanggalNow.length < 2) TanggalNow = "0" + TanggalNow;
 
   return `${TahunNow}${bulanNow}${TanggalNow}`;
+};
+const handleWaktuPengukuran = (date) => {
+  const year = date.slice(0, 4);
+  const month = date.slice(4, 6);
+  const day = date.slice(6, 8);
+  return `${day}-${month}-${year}`;
 };
 
 const History = () => {
@@ -70,14 +77,13 @@ const History = () => {
 
     arrSementaraDataPengukuran.map((res) => {
       const d = new Date();
-      let bulanNow = d.getMonth() + 3;
+      let bulanNow = d.getMonth() + 1;
       let TahunNow = d.getFullYear();
       const idPengukuran = handleDate();
       const tahun = res.tanggal_lahir.slice(0, 4);
       const bulan = res.tanggal_lahir.slice(5, 7);
 
       const umurBulan = (TahunNow - tahun) * 12 + (bulanNow - bulan);
-      // console.log(umurBulan);
       set(
         ref(
           db,
@@ -91,45 +97,85 @@ const History = () => {
   };
 
   const keys = Object.keys(dataPengukuran);
-  let arrKeyPengukuran = [];
-  keys.forEach((key) => {
-    arrDataPengukuran.push(dataPengukuran[key]);
-    const keys2 = Object.keys(dataPengukuran[key]).slice(0, -2);
-    arrKeyPengukuran.push(keys2);
-    // console.log(keys2);
-  });
   // console.log(arrKeyPengukuran);
-  console.log("===========================");
+  // console.log(dataPengukuran);
+  // console.log("===========================");
+
   return (
     <>
       <div className="riwayatContainer">
         <h1>Riwayat Pengukuran</h1>
         <section className="riwayatPengukuran" id="riwayat-pengukuran">
-          {arrDataPengukuran.map((item) => (
-            <div className="riwayatCard">
-              <div className="left">
-                <h2>
-                  <pre>
-                    {item.name}
-                    {handleStatus(item.Status)}
-                  </pre>
-                </h2>
-                <h4>{item.tanggal_lahir}</h4>
-                <h5>Waktu Pengukuran : {}</h5>
-                <span></span>
-              </div>
-              <div className="right">
-                <pre>
-                  <h5>Berat Badan : {console.log(arrKeyPengukuran)} </h5>
-                  <h5>Tinggi Badan : {item.TinggiBadan}</h5>
-                  <h5>IMT : {item.IMT}</h5>
-                </pre>
-              </div>
-              <button onClick={mulaiPengukuran} value={item.name}>
-                Mulai
-              </button>
-            </div>
-          ))}
+          {keys.map((key) => {
+            const dataPengukuranBulanIni = dataPengukuran[key];
+            const objKeys = Object.keys(dataPengukuranBulanIni).slice(0, -2);
+            const dataPengukuranTerbaru = objKeys.pop();
+            // console.log(dataPengukuranTerbaru);
+            console.log(dataPengukuranBulanIni);
+            return (
+              <>
+                <div className="riwayatCard">
+                  <div className="left">
+                    <h2>
+                      {dataPengukuranBulanIni.name}
+                      {/* {handleStatus(Status)} */}
+                    </h2>
+                    {/* <h4>{item.tanggal_lahir}</h4> */}
+                    <h5>
+                      Waktu Pengukuran :
+                      {dataPengukuranTerbaru !== undefined
+                        ? handleWaktuPengukuran(dataPengukuranTerbaru)
+                        : "Lakukan Pengukuran"}
+                    </h5>
+                    <span></span>
+                  </div>
+
+                  <div className="right">
+                    <pre>
+                      <h5>
+                        Berat Badan :
+                        {dataPengukuranTerbaru !== undefined
+                          ? dataPengukuranBulanIni[dataPengukuranTerbaru][
+                              "BeratBadan"
+                            ]
+                          : "-"}
+                      </h5>
+                      <h5>
+                        Tinggi Badan :{" "}
+                        {dataPengukuranTerbaru !== undefined
+                          ? dataPengukuranBulanIni[dataPengukuranTerbaru][
+                              "TinggiBadan"
+                            ]
+                          : "-"}
+                      </h5>
+                      <h5>
+                        IMT :{" "}
+                        {dataPengukuranTerbaru !== undefined
+                          ? dataPengukuranBulanIni[dataPengukuranTerbaru]["IMT"]
+                          : "-"}
+                      </h5>
+                      <h5>
+                        Umur (Bulan) :
+                        {dataPengukuranTerbaru !== undefined
+                          ? dataPengukuranBulanIni[dataPengukuranTerbaru][
+                              "umurBulan"
+                            ]
+                          : "-"}
+                      </h5>
+                    </pre>
+                  </div>
+
+                  <button
+                    onClick={mulaiPengukuran}
+                    value={dataPengukuranBulanIni.name}
+                  >
+                    Mulai
+                  </button>
+                  <GrafikBBLakiLaki />
+                </div>
+              </>
+            );
+          })}
         </section>
       </div>
     </>
