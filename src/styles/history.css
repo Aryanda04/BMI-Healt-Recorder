@@ -53,3 +53,27 @@
 #statusUnderweight {
     background-color: red;
 }
+
+/* DTAIL Riwayat */
+.riwayatDetailContent{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #93B4EA;
+    box-shadow: 0px 4px 30px rgba(147, 180, 234, 0.3);
+border-radius: 10px;
+padding: 1rem;
+}
+.riwayatDetailContent h2{
+    margin-left: 1rem;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 32px;
+    color: #93B4EA;
+}
+
+.grafikContainer{
+    display: flex;
+    flex-direction: column;
+}

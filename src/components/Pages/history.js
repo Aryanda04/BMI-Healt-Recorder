@@ -1,5 +1,6 @@
 // import {auth} from '../firebase'
-import age from "age-calculator";
+import { Link, useNavigate } from "react-router-dom";
+
 import React, { useEffect, useState } from "react";
 import { ref, set, child, get, update, remove } from "firebase/database";
 import { db, auth } from "../../firebase";
@@ -25,9 +26,10 @@ const handleStatus = (params) => {
     );
   }
 };
+
 const handleDate = () => {
   const d = new Date();
-  let bulanNow = "" + (d.getMonth() + 3);
+  let bulanNow = "" + (d.getMonth() + 1);
   let TanggalNow = "" + d.getDate();
   let TahunNow = "" + d.getFullYear();
   if (bulanNow.length < 2) bulanNow = "0" + bulanNow;
@@ -43,6 +45,7 @@ const handleWaktuPengukuran = (date) => {
 };
 
 const History = () => {
+  let navigate = useNavigate();
   const [dataPengukuran, setDataPengukuran] = useState([]);
   let [fetchStatus, setFetchStatus] = useState(true);
   const arrDataPengukuran = [];
@@ -72,10 +75,11 @@ const History = () => {
 
   const mulaiPengukuran = (event) => {
     const arrSementaraDataPengukuran = [];
-    let name = event.target.value;
-    arrSementaraDataPengukuran.push(dataPengukuran[name]);
+    let userId = event.target.value;
+    arrSementaraDataPengukuran.push(dataPengukuran[userId]);
 
     arrSementaraDataPengukuran.map((res) => {
+      console.log(res);
       const d = new Date();
       let bulanNow = d.getMonth() + 1;
       let TahunNow = d.getFullYear();
@@ -87,7 +91,7 @@ const History = () => {
       set(
         ref(
           db,
-          `puskesmas/users/${auth.currentUser.uid}/pengukuran/${res.name}/${idPengukuran}`
+          `puskesmas/users/${auth.currentUser.uid}/pengukuran/${userId}/${idPengukuran}`
         ),
         {
           umurBulan: umurBulan,
@@ -100,6 +104,12 @@ const History = () => {
   // console.log(arrKeyPengukuran);
   // console.log(dataPengukuran);
   // console.log("===========================");
+  const handleShow = (e) => {
+    let userId = e.target.getAttribute("value");
+    console.log(userId);
+    navigate(`/riwayat/${userId}`);
+    console.log("BERHASIL");
+  };
 
   return (
     <>
@@ -110,18 +120,19 @@ const History = () => {
             const dataPengukuranBulanIni = dataPengukuran[key];
             const objKeys = Object.keys(dataPengukuranBulanIni).slice(0, -2);
             const dataPengukuranTerbaru = objKeys.pop();
-            // console.log(dataPengukuranTerbaru);
+            console.log(dataPengukuranTerbaru);
+            // console.log(key);
             console.log(dataPengukuranBulanIni);
             return (
               <>
-                <div className="riwayatCard">
-                  <div className="left">
-                    <h2>
+                <div className="riwayatCard" value={key} onClick={handleShow}>
+                  <div className="left" value={key} onClick={handleShow}>
+                    <h2 value={key} onClick={handleShow}>
                       {dataPengukuranBulanIni.name}
                       {/* {handleStatus(Status)} */}
                     </h2>
                     {/* <h4>{item.tanggal_lahir}</h4> */}
-                    <h5>
+                    <h5 value={key} onClick={handleShow}>
                       Waktu Pengukuran :
                       {dataPengukuranTerbaru !== undefined
                         ? handleWaktuPengukuran(dataPengukuranTerbaru)
@@ -130,31 +141,31 @@ const History = () => {
                     <span></span>
                   </div>
 
-                  <div className="right">
+                  <div className="right" value={key} onClick={handleShow}>
                     <pre>
-                      <h5>
+                      <h5 value={key} onClick={handleShow}>
                         Berat Badan :
                         {dataPengukuranTerbaru !== undefined
                           ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                              "BeratBadan"
+                              "beratBadan"
                             ]
                           : "-"}
                       </h5>
-                      <h5>
+                      <h5 value={key} onClick={handleShow}>
                         Tinggi Badan :{" "}
                         {dataPengukuranTerbaru !== undefined
                           ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                              "TinggiBadan"
+                              "tinggiBadan"
                             ]
                           : "-"}
                       </h5>
-                      <h5>
+                      <h5 value={key} onClick={handleShow}>
                         IMT :{" "}
                         {dataPengukuranTerbaru !== undefined
                           ? dataPengukuranBulanIni[dataPengukuranTerbaru]["IMT"]
                           : "-"}
                       </h5>
-                      <h5>
+                      <h5 value={key} onClick={handleShow}>
                         Umur (Bulan) :
                         {dataPengukuranTerbaru !== undefined
                           ? dataPengukuranBulanIni[dataPengukuranTerbaru][
@@ -165,13 +176,9 @@ const History = () => {
                     </pre>
                   </div>
 
-                  <button
-                    onClick={mulaiPengukuran}
-                    value={dataPengukuranBulanIni.name}
-                  >
+                  <button onClick={mulaiPengukuran} value={key}>
                     Mulai
                   </button>
-                  <GrafikBBLakiLaki />
                 </div>
               </>
             );

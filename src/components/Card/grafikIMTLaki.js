@@ -71,28 +71,58 @@ export default function GrafikIMTLakiLaki() {
         ],
         datasets: [
           {
-            label: "Standar",
+            label: "-3 SD",
+            fill: false,
+
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: [
-              13.4, 14.9, 16.3, 16.9, 17.2, 17.3, 17.3, 17.3, 17.3, 17.3, 17.2,
-              17.0, 16.9, 16.8, 16.7, 16.6, 16.4, 16.3, 16.2, 16.1, 16.1, 16.0,
-              15.9, 15.8, 15.8, 15.7, 16.0, 15.9, 15.9, 15.9, 15.8, 15.8, 15.8,
-              15.7, 15.7, 15.7, 15.6, 15.6, 15.6, 15.5, 15.5, 15.5, 15.5, 15.4,
-              15.4, 15.4, 15.4, 15.4, 15.3, 15.3, 15.3, 15.3, 15.3, 15.3, 15.3,
-              15.3, 15.2, 15.2, 15.2, 15.2, 15.2, 15.2,
-            ],
+            data: [],
+          },
+          {
+            label: "-2 SD",
+            backgroundColor: "#4c51bf",
+            borderColor: "#4c51bf",
+            data: [],
             fill: false,
           },
           {
-            label: "Hasil pengukuran",
+            label: "-1 SD",
             fill: false,
+            backgroundColor: "#4c51bf",
+            borderColor: "#4c51bf",
+            data: [],
+          },
+          {
+            label: "Standar",
             backgroundColor: "#fff",
             borderColor: "#fff",
+            data: [],
+            fill: false,
+          },
+          {
+            label: "+1 SD",
+            fill: false,
+            backgroundColor: "#4c51bf",
+            borderColor: "#4c51bf",
+            data: [],
+          },
+          {
+            label: "+2 SD",
+            fill: false,
+            backgroundColor: "#4c51bf",
+            borderColor: "#4c51bf",
+            data: [],
+          },
+          {
+            label: "+3 SD",
+            fill: false,
+            backgroundColor: "#4c51bf",
+            borderColor: "#4c51bf",
             data: [],
           },
         ],
       },
+
       options: {
         maintainAspectRatio: false,
         responsive: true,
@@ -114,7 +144,7 @@ export default function GrafikIMTLakiLaki() {
         },
         hover: {
           mode: "nearest",
-          intersect: true,
+          intersect: false,
         },
         scales: {
           xAxes: [
@@ -164,20 +194,20 @@ export default function GrafikIMTLakiLaki() {
         },
       },
     };
-    var ctx = document.getElementById("grafikIMTLaki").getContext("2d");
+    var ctx = document.getElementById("grafikIMT").getContext("2d");
     window.myLine = new Chart(ctx, config);
   }, []);
   return (
     <>
-      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700">
-        <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
-          <div className="flex flex-wrap items-center">
-            <div className="relative w-full max-w-full flex-grow flex-1">
-              <h6 className="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
-                Standar IMT anak laki-laki menurut Umur
+      <div className="grafikLakiContainer">
+        <div className="">
+          <div className="">
+            <div className="">
+              <h6 className="">
+                Standar Tinggi Badan anak laki-laki menurut Umur
               </h6>
               <h2 className="text-white text-xl font-semibold">
-                Grafik IMT/Bulan
+                Grafik Cm/Bulan
               </h2>
             </div>
           </div>
@@ -185,7 +215,7 @@ export default function GrafikIMTLakiLaki() {
         <div className="p-4 flex-auto">
           {/* Chart */}
           <div className="relative h-350-px">
-            <canvas id="grafikIMTLaki"></canvas>
+            <canvas id="grafikIMT"></canvas>
           </div>
         </div>
       </div>

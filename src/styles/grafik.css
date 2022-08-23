@@ -1,0 +1,19 @@
+.wrapper{
+    width:80%;
+    display:block;
+    overflow:hidden;
+    margin:0 auto;
+    padding: 20px;
+    background:#fff;
+    border-radius:4px;
+  }
+  
+  canvas{
+    background:black;
+    height:400px;
+  }
+
+  .grafikLakiContainer{
+    color: white;
+    background-color: black;
+  }

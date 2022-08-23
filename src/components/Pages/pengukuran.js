@@ -1,4 +1,5 @@
 // import {auth} from '../firebase'
+import uniqid from "uniqid";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
@@ -55,6 +56,7 @@ const PengukuranForm = () => {
   };
 
   const writeUserData = (e) => {
+    let userId = uniqid();
     e.preventDefault();
     let { name, tanggal_lahir } = input;
     const d = new Date();
@@ -65,10 +67,13 @@ const PengukuranForm = () => {
     // console.log(bulan + "/" + Tanggal + "/" + Tahun);
     const umurBulan = dateFormatter(tanggal_lahir, Tahun, bulan);
 
-    set(ref(db, `puskesmas/users/${auth.currentUser.uid}/pengukuran/${name}`), {
-      name: name,
-      tanggal_lahir: tanggal_lahir,
-    });
+    set(
+      ref(db, `puskesmas/users/${auth.currentUser.uid}/pengukuran/${userId}`),
+      {
+        name: name,
+        tanggal_lahir: tanggal_lahir,
+      }
+    );
 
     navigate("/riwayat");
     alert("berhasil menambahkan data");

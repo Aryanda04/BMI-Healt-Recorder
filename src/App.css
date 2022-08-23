@@ -6,6 +6,7 @@
 @import './styles/history.css';
 @import './styles/home.css';
 @import './styles//pengukuran.css';
+@import './styles//grafik.css';
 
 * {
   margin: 0;
@@ -31,4 +32,8 @@ a {
 .dashboardContainer{
   margin: -40px 0 0 -50px;
 
+}
+
+.centerText{
+  text-align: center;
 }
