@@ -5,44 +5,6 @@ import React, { useEffect, useState } from "react";
 import { ref, set, child, get, update, remove } from "firebase/database";
 import { db, auth } from "../../firebase";
 import GrafikBBLakiLaki from "../Card/garfikBBLaki";
-const handleStatus = (params) => {
-  if (params === "Normal") {
-    return (
-      <>
-        <p id="statusNormal">{params}</p>
-      </>
-    );
-  } else if (params === "Obesitas") {
-    return (
-      <>
-        <p id="statusObesitas">{params}</p>
-      </>
-    );
-  } else if (params === "Underweight") {
-    return (
-      <>
-        <p id="statusUnderweight">{params}</p>
-      </>
-    );
-  }
-};
-
-const handleDate = () => {
-  const d = new Date();
-  let bulanNow = "" + (d.getMonth() + 1);
-  let TanggalNow = "" + d.getDate();
-  let TahunNow = "" + d.getFullYear();
-  if (bulanNow.length < 2) bulanNow = "0" + bulanNow;
-  if (TanggalNow.length < 2) TanggalNow = "0" + TanggalNow;
-
-  return `${TahunNow}${bulanNow}${TanggalNow}`;
-};
-const handleWaktuPengukuran = (date) => {
-  const year = date.slice(0, 4);
-  const month = date.slice(4, 6);
-  const day = date.slice(6, 8);
-  return `${day}-${month}-${year}`;
-};
 
 const History = () => {
   let navigate = useNavigate();
@@ -99,6 +61,50 @@ const History = () => {
       );
     });
   };
+  const handleDate = () => {
+    const d = new Date();
+    let bulanNow = "" + (d.getMonth() + 1);
+    let TanggalNow = "" + d.getDate();
+    let TahunNow = "" + d.getFullYear();
+    if (bulanNow.length < 2) bulanNow = "0" + bulanNow;
+    if (TanggalNow.length < 2) TanggalNow = "0" + TanggalNow;
+
+    return `${TahunNow}${bulanNow}${TanggalNow}`;
+  };
+  const handleWaktuPengukuran = (date) => {
+    const year = date.slice(0, 4);
+    const month = date.slice(4, 6);
+    const day = date.slice(6, 8);
+    return `${day}-${month}-${year}`;
+  };
+  const handleStatus = (params) => {
+    if (params === "Normal") {
+      return (
+        <>
+          <p id="statusNormal">{params}</p>
+        </>
+      );
+    } else if (params === "Obesitas") {
+      return (
+        <>
+          <p id="statusObesitas">{params}</p>
+        </>
+      );
+    } else if (params === "Underweight") {
+      return (
+        <>
+          <p id="statusUnderweight">{params}</p>
+        </>
+      );
+    }
+  };
+  const handleGender = (params) => {
+    if (params === 1) {
+      return "laki-laki";
+    } else if (params === 0) {
+      return "Perempuan";
+    }
+  };
 
   const keys = Object.keys(dataPengukuran);
   // console.log(arrKeyPengukuran);
@@ -118,20 +124,19 @@ const History = () => {
         <section className="riwayatPengukuran" id="riwayat-pengukuran">
           {keys.map((key) => {
             const dataPengukuranBulanIni = dataPengukuran[key];
-            const objKeys = Object.keys(dataPengukuranBulanIni).slice(0, -2);
+            const objKeys = Object.keys(dataPengukuranBulanIni).slice(0, -3);
             const dataPengukuranTerbaru = objKeys.pop();
-            console.log(dataPengukuranTerbaru);
+            // console.log(dataPengukuranTerbaru);
             // console.log(key);
-            console.log(dataPengukuranBulanIni);
+            // console.log(dataPengukuranBulanIni);
             return (
               <>
                 <div className="riwayatCard" value={key} onClick={handleShow}>
                   <div className="left" value={key} onClick={handleShow}>
                     <h2 value={key} onClick={handleShow}>
                       {dataPengukuranBulanIni.name}
-                      {/* {handleStatus(Status)} */}
                     </h2>
-                    {/* <h4>{item.tanggal_lahir}</h4> */}
+                    <h2>{handleGender(dataPengukuranBulanIni.isMale)}</h2>
                     <h5 value={key} onClick={handleShow}>
                       Waktu Pengukuran :
                       {dataPengukuranTerbaru !== undefined

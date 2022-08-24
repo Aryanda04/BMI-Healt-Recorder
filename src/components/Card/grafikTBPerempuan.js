@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "chart.js";
 
-export default function GrafikIMTLakiLaki() {
+export default function GrafikTBPerempuan() {
   React.useEffect(() => {
     var config = {
       type: "line",
@@ -49,24 +49,24 @@ export default function GrafikIMTLakiLaki() {
             label: "-3 SD",
             fill: false,
 
-            backgroundColor: "	#880808",
-            borderColor: "	#880808",
+            backgroundColor: "#4c51bf",
+            borderColor: "#4c51bf",
             data: [
-              12.8, 12.8, 12.8, 12.7, 12.7, 12.7, 12.6, 12.6, 12.5, 12.5, 12.5,
-              12.4, 12.4, 12.4, 12.3, 12.3, 12.3, 12.2, 12.2, 12.2, 12.2, 12.2,
-              12.1, 12.1, 12.1, 12.1, 12.1, 12.1, 12, 12, 12, 12, 12, 12, 12,
-              12, 12,
+              76.8, 77.5, 78.1, 78.8, 79.5, 80.1, 80.7, 81.3, 81.9, 82.5, 83.1,
+              83.6, 84.2, 84.7, 85.3, 85.8, 86.3, 86.8, 87.4, 87.9, 88.4, 88.9,
+              89.3, 89.8, 90.3, 90.7, 91.2, 91.7, 92.1, 92.6, 93, 93.4, 93.9,
+              94.3, 94.7, 95.2,
             ],
           },
           {
             label: "-2 SD",
-            backgroundColor: "#880808",
-            borderColor: "#880808",
+            backgroundColor: "#4c51bf",
+            borderColor: "#4c51bf",
             data: [
-              13.8, 13.7, 13.7, 13.6, 13.6, 13.6, 13.5, 13.5, 13.5, 13.4, 13.4,
-              13.4, 13.3, 13.3, 13.3, 13.2, 13.2, 13.2, 13.2, 13.1, 13.1, 13.1,
-              13.1, 13.1, 13, 13, 13, 13, 13, 13, 13, 12.9, 12.9, 12.9, 12.9,
-              12.9,
+              80, 80.8, 81.5, 82.2, 82.9, 83.6, 84.3, 84.9, 85.6, 86.2, 86.8,
+              87.4, 88, 88.6, 89.2, 89.8, 90.4, 90.9, 91.5, 92, 92.5, 93.1,
+              93.6, 94.1, 94.6, 95.1, 95.6, 96.1, 96.6, 97.1, 97.6, 98.1, 98.5,
+              99, 99.5, 99.9,
             ],
             fill: false,
           },
@@ -76,10 +76,10 @@ export default function GrafikIMTLakiLaki() {
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
             data: [
-              14.8, 14.8, 14.7, 14.7, 14.7, 14.6, 14.6, 14.6, 14.5, 14.5, 14.5,
-              14.4, 14.4, 14.4, 14.3, 14.3, 14.3, 14.3, 14.2, 14.2, 14.2, 14.2,
-              14.2, 14.1, 14.1, 14.1, 14.1, 14.1, 14.1, 14, 14, 14, 14, 14, 14,
-              14,
+              83.3, 84.1, 84.9, 85.7, 86.4, 87.1, 87.9, 88.6, 89.3, 89.9, 90.6,
+              91.2, 91.9, 92.5, 93.1, 93.8, 94.4, 95, 95.6, 96.2, 96.7, 97.3,
+              97.9, 98.4, 99, 99.5, 100.1, 100.6, 101.1, 101.6, 102.2, 102.7,
+              103.2, 103.7, 104.2, 104.7,
             ],
           },
           {
@@ -87,10 +87,10 @@ export default function GrafikIMTLakiLaki() {
             backgroundColor: "#fff",
             borderColor: "#fff",
             data: [
-              16, 15.9, 15.9, 15.9, 15.8, 15.8, 15.8, 15.7, 15.7, 15.7, 15.6,
-              15.6, 15.6, 15.5, 15.5, 15.5, 15.5, 15.4, 15.4, 15.4, 15.4, 15.4,
-              15.3, 15.3, 15.3, 15.3, 15.3, 15.3, 15.3, 15.3, 15.2, 15.2, 15.2,
-              15.2, 15.2, 15.2,
+              86.6, 87.4, 88.3, 89.1, 89.9, 90.7, 91.4, 92.2, 92.9, 93.6, 94.4,
+              95.1, 95.7, 96.4, 97.1, 97.7, 98.4, 99, 99.7, 100.3, 100.9, 101.5,
+              102.1, 102.7, 103.3, 103.9, 104.5, 105, 105.6, 106.2, 106.7,
+              107.3, 107.8, 108.4, 108.9, 109.4,
             ],
             fill: false,
           },
@@ -100,10 +100,10 @@ export default function GrafikIMTLakiLaki() {
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
             data: [
-              17.3, 17.3, 17.2, 17.2, 17.1, 17.1, 17.1, 17, 17, 17, 16.9, 16.9,
-              16.9, 16.8, 16.8, 16.8, 16.8, 16.8, 16.7, 16.7, 16.7, 16.7, 16.7,
-              16.7, 16.7, 16.7, 16.6, 16.6, 16.6, 16.6, 16.6, 16.6, 16.6, 16.6,
-              16.6, 16.6,
+              89.9, 90.8, 91.7, 92.5, 93.4, 94.2, 95, 95.8, 96.6, 97.4, 98.1,
+              98.9, 99.6, 100.3, 101, 101.7, 102.4, 103.1, 103.8, 104.5, 105.1,
+              105.8, 106.4, 107, 107.7, 108.3, 108.9, 109.5, 110.1, 110.7,
+              111.3, 111.9, 112.5, 113, 113.6, 114.2,
             ],
           },
           {
@@ -112,22 +112,22 @@ export default function GrafikIMTLakiLaki() {
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
             data: [
-              18.8, 18.8, 18.7, 18.7, 18.6, 18.6, 18.5, 18.5, 18.5, 18.4, 18.4,
-              18.4, 18.3, 18.3, 18.3, 18.2, 18.2, 18.2, 18.2, 18.2, 18.2, 18.2,
-              18.2, 18.2, 18.2, 18.2, 18.2, 18.2, 18.2, 18.2, 18.2, 18.2, 18.2,
-              18.3, 18.3, 18.3,
+              93.1, 94.1, 95, 96, 96.9, 97.7, 98.6, 99.4, 100.3, 101.1, 101.9,
+              102.7, 103.4, 104.2, 105, 105.7, 106.4, 107.2, 107.9, 108.6,
+              109.3, 110, 110.7, 111.3, 112, 112.7, 113.3, 114, 114.6, 115.2,
+              115.9, 116.5, 117.1, 117.7, 118.3, 118.9,
             ],
           },
           {
             label: "+3 SD",
             fill: false,
-            backgroundColor: "	#880808",
-            borderColor: "	#880808",
+            backgroundColor: "#4c51bf",
+            borderColor: "#4c51bf",
             data: [
-              20.5, 20.5, 20.4, 20.4, 20.3, 20.2, 20.2, 20.1, 20.1, 20, 20, 20,
-              19.9, 19.9, 19.9, 19.9, 19.9, 19.8, 19.8, 19.8, 19.8, 19.8, 19.9,
-              19.9, 19.9, 19.9, 19.9, 19.9, 20, 20, 20, 20.1, 20.1, 20.2, 20.2,
-              20.3,
+              96.4, 97.4, 98.4, 99.4, 100.3, 101.3, 102.2, 103.1, 103.9, 104.8,
+              105.6, 106.5, 107.3, 108.1, 108.9, 109.7, 110.5, 111.2, 112,
+              112.7, 113.5, 114.2, 114.9, 115.7, 116.4, 117.1, 117.7, 118.4,
+              119.1, 119.8, 120.4, 121.1, 121.8, 122.4, 123.1, 123.7,
             ],
           },
         ],
@@ -187,7 +187,7 @@ export default function GrafikIMTLakiLaki() {
               display: true,
               scaleLabel: {
                 display: false,
-                labelString: "IMT",
+                labelString: "KiloGram",
                 fontColor: "white",
               },
               gridLines: {
@@ -204,7 +204,7 @@ export default function GrafikIMTLakiLaki() {
         },
       },
     };
-    var ctx = document.getElementById("grafikIMT").getContext("2d");
+    var ctx = document.getElementById("grafikTinggiBadan").getContext("2d");
     window.myLine = new Chart(ctx, config);
   }, []);
   return (
@@ -213,9 +213,11 @@ export default function GrafikIMTLakiLaki() {
         <div className="">
           <div className="">
             <div className="">
-              <h6 className="">Standar IMT anak laki-laki menurut Umur</h6>
+              <h6 className="">
+                Standar Tinggi Badan anak Perempuan menurut Umur
+              </h6>
               <h2 className="text-white text-xl font-semibold">
-                Grafik IMT/Bulan
+                Grafik Cm/Bulan
               </h2>
             </div>
           </div>
@@ -223,7 +225,7 @@ export default function GrafikIMTLakiLaki() {
         <div className="p-4 flex-auto">
           {/* Chart */}
           <div className="relative h-350-px">
-            <canvas id="grafikIMT"></canvas>
+            <canvas id="grafikTinggiBadan"></canvas>
           </div>
         </div>
       </div>

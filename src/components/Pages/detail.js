@@ -7,6 +7,9 @@ import { db, auth } from "../../firebase";
 import GrafikBBLakiLaki from "../Card/garfikBBLaki";
 import GrafikTBLakiLaki from "../Card/grafikTBLaki";
 import GrafikIMTLakiLaki from "../Card/grafikIMTLaki";
+import GrafikBBPerempuan from "../Card/grafikBBPerempuan";
+import GrafikTBPerempuan from "../Card/grafikTBPerempuan";
+import GrafikIMTPerempuan from "../Card/grafikIMTPerempuan";
 
 const Detail = () => {
   let { slug } = useParams();
@@ -35,6 +38,13 @@ const Detail = () => {
   }, [fetchStatus, setFetchStatus]);
   console.log(dataPengukuran);
   // const keys = Object.keys(dataPengukuran);
+  const handleGender = (params) => {
+    if (params === 1) {
+      return "laki-laki";
+    } else if (params === 0) {
+      return "Perempuan";
+    }
+  };
 
   return (
     <>
@@ -42,14 +52,24 @@ const Detail = () => {
         <h1>Riwayat Pengukuran</h1>
         <div className="riwayatDetailContent">
           <h2>Nama : {dataPengukuran.name}</h2>
-          <h2>Jenis Kelamin : {dataPengukuran.isMale}</h2>
+          <h2>Jenis Kelamin : {handleGender(dataPengukuran.isMale)}</h2>
           <h2>Tanggal Lahir : {dataPengukuran.tanggal_lahir}</h2>
           <br></br>
           <h2 className="centerText">Hasil Pengukuran</h2>
           <div className="grafikContatiner">
-            <GrafikBBLakiLaki />
-            <GrafikTBLakiLaki />
-            <GrafikIMTLakiLaki />
+            {dataPengukuran.isMale !== 1 ? (
+              <>
+                <GrafikBBPerempuan />
+                <GrafikTBPerempuan />
+                <GrafikIMTPerempuan />
+              </>
+            ) : (
+              <>
+                <GrafikBBLakiLaki />
+                <GrafikTBLakiLaki />
+                <GrafikIMTLakiLaki />
+              </>
+            )}
           </div>
         </div>
       </div>
