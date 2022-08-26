@@ -1,6 +1,12 @@
 .homeContainer {
     margin: -40px 0 0 -50px;
 }
+#mapContainer {
+    height: 500px;
+    min-width: 310px;
+    max-width: 800px;
+    margin: 0 auto;
+}
 
 .homeContainer h1 {
     text-align: left;

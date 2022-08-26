@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { ref, set, child, get, update, remove } from "firebase/database";
 import { db, auth } from "../../firebase";
 import GrafikBBLakiLaki from "../Card/garfikBBLaki";
+import Highcharts from "highcharts";
 
 const History = () => {
   let navigate = useNavigate();
