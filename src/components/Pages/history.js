@@ -60,6 +60,9 @@ const History = () => {
           umurBulan: umurBulan,
         }
       );
+      set(ref(db, `puskesmas/users/${auth.currentUser.uid}/alat`), {
+        userId: userId,
+      });
     });
   };
   const handleDate = () => {

@@ -1,6 +1,6 @@
 // import {auth} from '../firebase'
 import uniqid from "uniqid";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { ref, set, child, get, update, remove } from "firebase/database";
@@ -8,109 +8,59 @@ import { ref, set, child, get, update, remove } from "firebase/database";
 import puskesmasImg from "../../assets/puskesmas-assets.jpg";
 import { writeUserData, db, auth } from "../../firebase";
 import convertLayerAtRulesToControlComments from "tailwindcss/lib/lib/convertLayerAtRulesToControlComments";
-const PengukuranForm = () => {
-  let navigate = useNavigate();
+const Pengukuran = () => {
+  let { slug } = useParams();
 
+  const [dataPengukuran, setDataPengukuran] = useState([]);
   let [fetchStatus, setFetchStatus] = useState(true);
-
-  const [input, setInput] = useState({
-    name: "",
-    tanggal_lahir: "",
-  });
-
   useEffect(() => {
     const dbRef = ref(db);
-    get(child(dbRef, `puskesmas/users/${auth.currentUser.uid}`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          let result = data["pengukuran"];
-          console.log(result);
-          setInput({
-            name: result.name,
-            tanggal_lahir: result.tanggal_lahir,
-          });
-        }
-        return () => {
-          setInput({
-            name: "",
-            tanggal_lahir: "",
-          });
-        };
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
-  const handleChange = (e) => {
-    let value = e.target.value;
-    let name = e.target.name;
-
-    setInput({ ...input, [name]: value });
+    const fetchData = async () => {
+      get(child(dbRef, `puskesmas/users/${auth.currentUser.uid}`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            let result = data["pengukuran"][slug];
+            // console.log(result);
+            setDataPengukuran(result);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+    if (fetchStatus) {
+      fetchData();
+      setFetchStatus(false);
+    }
+  }, [fetchStatus, setFetchStatus]);
+  const handleGender = (params) => {
+    if (params === "1") {
+      return "laki-laki";
+    } else if (params === "0") {
+      return "Perempuan";
+    }
   };
-  const dateFormatter = (params, yearNow, monthNow) => {
-    const year = params.slice(0, 4);
-    const month = params.slice(5, 7);
-    return yearNow * 12 - year * 12 + (monthNow - month);
-  };
-
-  const writeUserData = (e) => {
-    let userId = uniqid();
-    e.preventDefault();
-    let { name, tanggal_lahir } = input;
-    const d = new Date();
-    let bulan = d.getMonth() + 9;
-    let Tanggal = d.getDate();
-    let Tahun = d.getFullYear();
-    const idPengukuran = `${bulan}${Tanggal}${Tahun}`;
-    // console.log(bulan + "/" + Tanggal + "/" + Tahun);
-    const umurBulan = dateFormatter(tanggal_lahir, Tahun, bulan);
-
-    set(
-      ref(db, `puskesmas/users/${auth.currentUser.uid}/pengukuran/${userId}`),
-      {
-        name: name,
-        tanggal_lahir: tanggal_lahir,
-      }
-    );
-
-    navigate("/riwayat");
-    alert("berhasil menambahkan data");
+  const changeFetchStatus = () => {
     setFetchStatus(true);
+    console.log(dataPengukuran);
   };
 
   return (
     <>
       <div className="dashboardContainer">
         <h1>Mulai Pengukuran</h1>
-
-        <div className="pengukuranForm-container">
-          <label>Nama </label>
-          <input
-            type="text"
-            placeholder="text"
-            value={input.name}
-            id="name"
-            onChange={handleChange}
-            name="name"
-          ></input>
-          <label>Tanggal Lahir</label>
-          <input
-            value={input.tanggal_lahir}
-            id="tanggalLahir"
-            onChange={handleChange}
-            type="date"
-            placeholder="Date"
-            name="tanggal_lahir"
-          ></input>
-          <button id="addBtn" onClick={writeUserData}>
-            Tambahkan
-          </button>
-        </div>
+        <h2> name : {dataPengukuran.name}</h2>
+        <h2> jenisKelamin : {handleGender(dataPengukuran.jenisKelamin)}</h2>
+        <h2>Tanggal Lahir : {dataPengukuran.tanggal_lahir}</h2>
+        <h2>Test Fetch: {dataPengukuran.test}</h2>
+        <br></br>
+        <button onClick={changeFetchStatus}>
+          Fetch Data (selesai melakukan pengukuran pencet sini)
+        </button>
       </div>
     </>
   );
 };
 
-export default PengukuranForm;
+export default Pengukuran;
