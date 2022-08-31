@@ -38,24 +38,28 @@ const Profil = () => {
   return (
     <>
       <div className="dashboardContainer">
-        <h1>Informasi Puskesmas {dataProfil.name}</h1>
+        <h1>
+          Informasi Puskesmas {dataProfil !== undefined ? dataProfil.name : "-"}
+        </h1>
         <div className="profilContainer">
           <div className="profilPict-Container">
             <img
-              src={dataProfil.profile_picture}
+              src={dataProfil !== undefined ? dataProfil.profile_picture : "-"}
               className="profillPict"
               alt="profilePicture"
             />
           </div>
           <div className="profilDetail-Container">
-            <h2>Puskesmas {dataProfil.name}</h2>
+            <h2>
+              Puskesmas {dataProfil !== undefined ? dataProfil.name : "-"}
+            </h2>
 
             <h4>Alamat</h4>
-            <p>{dataProfil.address}</p>
+            <p>{dataProfil !== undefined ? dataProfil.address : "-"}</p>
             <br></br>
             <h4>Kontak</h4>
-            <p>No HP : {dataProfil.phone}</p>
-            <p>Email : {dataProfil.email}</p>
+            <p>No HP : {dataProfil !== undefined ? dataProfil.phone : "-"}</p>
+            <p>Email : {dataProfil !== undefined ? dataProfil.email : "-"}</p>
           </div>
           <ProfilFormBtn triggerText={triggerText} className="profilFormBtn" />
         </div>

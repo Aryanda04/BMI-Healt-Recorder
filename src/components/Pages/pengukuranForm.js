@@ -94,7 +94,7 @@ const PengukuranForm = () => {
       }
     );
     set(ref(db, `puskesmas/users/${auth.currentUser.uid}/alat`), {
-      userId: userId,
+      alat: userId,
     });
 
     navigate(`/pengukuran/${userId}`);

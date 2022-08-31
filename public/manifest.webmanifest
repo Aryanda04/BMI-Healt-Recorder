@@ -1,0 +1,45 @@
+{
+    "name": "Fix Fat",
+    "short_name": "FixFat",
+    "lang": "en-US",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#93B4EA",
+    "icons": [
+      {
+        "src": "/maskable-icon_x48",
+        "sizes": "48x48",
+        "type": "png"
+      },
+      {
+        "src": "/maskable-icon_x72",
+        "sizes": "72x72",
+        "type": "png"
+      },
+      {
+        "src": "/maskable-icon_x96",
+        "sizes": "96x96",
+        "type": "png"
+      },
+      {
+        "src": "/maskable-icon_x128",
+        "sizes": "128x128",
+        "type": "png"
+      },
+      {
+        "src": "/maskable-icon_x192",
+        "sizes": "192x192",
+        "type": "png"
+      },
+      {
+        "src": "/maskable-icon_x384",
+        "sizes": "384x384",
+        "type": "png"
+      },
+      {
+        "src": "/maskable-icon_x512",
+        "sizes": "512x512",
+        "type": "png"
+      }
+    ]
+  }
