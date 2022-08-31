@@ -54,7 +54,7 @@ const Pengukuran = () => {
     return `${TahunNow}${bulanNow}${TanggalNow}`;
   };
   console.log(dataPengukuran[20220830]);
-  const idPengukuran = "20220830";
+  const idPengukuran = handleDate();
   // const mulaiPengukuran = (e) => {
   //   let userId = e;
   //   set(ref(db, `puskesmas/users/${auth.currentUser.uid}`), {
