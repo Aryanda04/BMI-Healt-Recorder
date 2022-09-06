@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getDatabase, ref, set, child, get, onValue } from "firebase/database";
-import uniqid from "uniqid";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCWJilHx9MqZhUJ8r7e21Uj_cHY2dDv-XI",

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+// import "./App.css";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import SignIn from "./components/signin";
 import Dashboard from "./components/dashboard";
+import "./styles/signin.css";
 
 function App() {
   const auth = getAuth();

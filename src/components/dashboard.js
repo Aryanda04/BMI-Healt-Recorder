@@ -12,7 +12,7 @@ import Pengukuran from "./Pages/pengukuran";
 
 function Dashboard() {
   return (
-    <div className="App">
+    <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AppLayout />}>
@@ -26,7 +26,7 @@ function Dashboard() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 

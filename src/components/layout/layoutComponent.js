@@ -1,13 +1,22 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "../sidebar";
+import Header from "./Navbar";
+import Sidebar from "./Sidebar";
 
 const LayoutComponent = () => {
-    return <div style={{
-        padding: '50px 0px 0px 370px'
-    }}>
+  return (
+    <>
+      <div className="wrapper">
         <Sidebar />
-        <Outlet />
-    </div>;
+        <div className="main-panel">
+          <Header />
+          <div className="content">
+            <Outlet />
+          </div>
+        </div>
+        {/* <Footer /> */}
+      </div>
+    </>
+  );
 };
 
 export default LayoutComponent;

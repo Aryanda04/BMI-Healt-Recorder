@@ -1,49 +1,26 @@
 {
-  "name": "Fix Fat",
-  "short_name": "FixFat",
-  "lang": "en-US",
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#93B4EA",
+  "short_name": "Fix Fat",
+  "name": "Body Measurenment Record",
   "icons": [
     {
-      "src": "/maskable-icon_x48",
-      "sizes": "48x48",
-      "type": "png"
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
     },
     {
-      "src": "/maskable-icon_x72",
-      "sizes": "72x72",
-      "type": "png"
+      "src": "icon192",
+      "type": "image/png",
+      "sizes": "192x192"
     },
     {
-      "src": "/maskable-icon_x96",
-      "sizes": "96x96",
-      "type": "png"
-    },
-    {
-      "src": "/maskable-icon_x128",
-      "sizes": "128x128",
-      "type": "png"
-    },{
-      "src": "/maskable-icon_x128",
+      "src": "icon144.png",
+      "type": "image/png",
       "sizes": "144x144",
-      "type": "png"
-    },
-    {
-      "src": "/maskable-icon_x192",
-      "sizes": "192x192",
-      "type": "png"
-    },
-    {
-      "src": "/maskable-icon_x384",
-      "sizes": "384x384",
-      "type": "png"
-    },
-    {
-      "src": "/maskable-icon_x512",
-      "sizes": "512x512",
-      "type": "png"
+      "purpose":"any"
     }
-  ]
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#93B4EA",
+  "background_color": "#ffffff"
 }

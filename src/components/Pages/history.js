@@ -1,17 +1,26 @@
-// import {auth} from '../firebase'
 import { Link, useNavigate } from "react-router-dom";
 
 import React, { useEffect, useState } from "react";
 import { ref, set, child, get, update, remove } from "firebase/database";
 import { db, auth } from "../../firebase";
-import GrafikBBLakiLaki from "../Card/garfikBBLaki";
-import Highcharts from "highcharts";
-
+import {
+  Badge,
+  Button,
+  Card,
+  Navbar,
+  Nav,
+  Table,
+  Container,
+  Row,
+  Col,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 const History = () => {
   let navigate = useNavigate();
+
   const [dataPengukuran, setDataPengukuran] = useState([]);
   let [fetchStatus, setFetchStatus] = useState(true);
-  const arrDataPengukuran = [];
 
   useEffect(() => {
     const dbRef = ref(db);
@@ -34,72 +43,11 @@ const History = () => {
       setFetchStatus(false);
     }
   }, [fetchStatus, setFetchStatus]);
-  // console.log(dataPengukuran);
-
-  const mulaiPengukuran = (event) => {
-    let userId = event.target.value;
-    navigate(`/pengukuran/${userId}`);
-    // const arrSementaraDataPengukuran = [];
-    // arrSementaraDataPengukuran.push(dataPengukuran[userId]);
-    // arrSementaraDataPengukuran.map((res) => {
-    //   console.log(res);
-    //   const d = new Date();
-    //   let bulanNow = d.getMonth() + 1;
-    //   let TahunNow = d.getFullYear();
-    //   const idPengukuran = handleDate();
-    //   const tahun = res.tanggal_lahir.slice(0, 4);
-    //   const bulan = res.tanggal_lahir.slice(5, 7);
-    //   const umurBulan = (TahunNow - tahun) * 12 + (bulanNow - bulan);
-    //   set(
-    //     ref(
-    //       db,
-    //       `puskesmas/users/${auth.currentUser.uid}/pengukuran/${userId}/${idPengukuran}`
-    //     ),
-    //     {
-    //       umurBulan: umurBulan,
-    //     }
-    //   );
-    //   set(ref(db, `puskesmas/users/${auth.currentUser.uid}/alat`), {
-    //     userId: userId,
-    //   });
-    // });
-  };
-  const handleDate = () => {
-    const d = new Date();
-    let bulanNow = "" + (d.getMonth() + 1);
-    let TanggalNow = "" + d.getDate();
-    let TahunNow = "" + d.getFullYear();
-    if (bulanNow.length < 2) bulanNow = "0" + bulanNow;
-    if (TanggalNow.length < 2) TanggalNow = "0" + TanggalNow;
-
-    return `${TahunNow}${bulanNow}${TanggalNow}`;
-  };
   const handleWaktuPengukuran = (date) => {
     const year = date.slice(0, 4);
     const month = date.slice(4, 6);
     const day = date.slice(6, 8);
     return `${day}-${month}-${year}`;
-  };
-  const handleStatus = (params) => {
-    if (params === "Normal") {
-      return (
-        <>
-          <p id="statusNormal">{params}</p>
-        </>
-      );
-    } else if (params === "Obesitas") {
-      return (
-        <>
-          <p id="statusObesitas">{params}</p>
-        </>
-      );
-    } else if (params === "Underweight") {
-      return (
-        <>
-          <p id="statusUnderweight">{params}</p>
-        </>
-      );
-    }
   };
   const handleGender = (params) => {
     if (params === 1) {
@@ -108,94 +56,153 @@ const History = () => {
       return "Perempuan";
     }
   };
-
-  const keys = Object.keys(dataPengukuran);
-  // console.log(arrKeyPengukuran);
-  // console.log(dataPengukuran);
-  // console.log("===========================");
-  const handleShow = (e) => {
+  const handleShowDetail = (e) => {
     let userId = e.target.getAttribute("value");
     console.log(userId);
     navigate(`/riwayat/${userId}`);
     console.log("BERHASIL");
   };
 
+  const mulaiPengukuran = (e) => {
+    // e.preventdefault();
+    // console.log(event);
+    let userId = e.target.value;
+    // console.log(userId);
+
+    navigate(`/pengukuran/${userId}`);
+  };
+  const keys = Object.keys(dataPengukuran);
   return (
     <>
-      <div className="riwayatContainer">
-        <h1>Riwayat Pengukuran</h1>
-        <section className="riwayatPengukuran" id="riwayat-pengukuran">
-          {keys.map((key) => {
-            const dataPengukuranBulanIni = dataPengukuran[key];
-            const objKeys = Object.keys(dataPengukuranBulanIni).slice(0, -3);
-            const dataPengukuranTerbaru = objKeys.pop();
-            // console.log(dataPengukuranTerbaru);
-            // console.log(key);
-            // console.log(dataPengukuranBulanIni);
-            return (
-              <>
-                <div className="riwayatCard">
-                  <div className="left">
-                    <h2>{dataPengukuranBulanIni.name}</h2>
-                    <h2>{handleGender(dataPengukuranBulanIni.isMale)}</h2>
-                    <h5>
-                      Waktu Pengukuran :
-                      {dataPengukuranTerbaru !== undefined
-                        ? handleWaktuPengukuran(dataPengukuranTerbaru)
-                        : "Lakukan Pengukuran"}
-                    </h5>
-                    <span></span>
-                  </div>
-
-                  <div className="right">
-                    <pre>
-                      <h5>
-                        Berat Badan :
-                        {dataPengukuranTerbaru !== undefined
-                          ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                              "BeratBadan"
-                            ]
-                          : "-"}
-                      </h5>
-                      <h5>
-                        Tinggi Badan :{" "}
-                        {dataPengukuranTerbaru !== undefined
-                          ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                              "TinggiBadan"
-                            ]
-                          : "-"}
-                      </h5>
-                      <h5>
-                        IMT :{" "}
-                        {dataPengukuranTerbaru !== undefined
-                          ? dataPengukuranBulanIni[dataPengukuranTerbaru]["IMT"]
-                          : "-"}
-                      </h5>
-                      <h5>
-                        Umur (Bulan) :
-                        {dataPengukuranTerbaru !== undefined
-                          ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                              "umurBulan"
-                            ]
-                          : "-"}
-                      </h5>
-                    </pre>
-                  </div>
-
-                  <button onClick={mulaiPengukuran} value={key}>
-                    Mulai
-                  </button>
-                  <button value={key} onClick={handleShow}>
-                    Lihat
-                  </button>
-                </div>
-              </>
-            );
-          })}
-        </section>
-      </div>
+      <Container fluid>
+        <Row>
+          <Col md="12">
+            <Card className="strpied-tabled-with-hover">
+              <Card.Header>
+                <Card.Title as="h4">Riwayat Pengukuran</Card.Title>
+                <p className="card-category">Riwayat Pengukuran Terakhir</p>
+              </Card.Header>
+              <Card.Body className="table-full-width table-responsive px-0">
+                <Table className="table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th className="border-0">No</th>
+                      <th className="border-0">Name</th>
+                      <th className="border-0">Waktu Pengukuran</th>
+                      <th className="border-0">Umur (Bulan)</th>
+                      <th className="border-0">Berat Badan</th>
+                      <th className="border-0">Tinggi Badan</th>
+                      <th className="border-0">IMT</th>
+                      <th className="border-0">%BF</th>
+                      <th className="border-0">Utils</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {keys.map((key, index) => {
+                      // console.log(key);
+                      const dataPengukuranBulanIni = dataPengukuran[key];
+                      const objKeys = Object.keys(dataPengukuranBulanIni).slice(
+                        0,
+                        -4
+                      );
+                      // console.log(objKeys);
+                      const dataPengukuranTerbaru = objKeys.pop();
+                      return (
+                        <>
+                          <tr>
+                            <td>{index + 1}</td>
+                            <td>{dataPengukuranBulanIni.name}</td>
+                            <td>
+                              {dataPengukuranTerbaru !== undefined
+                                ? handleWaktuPengukuran(dataPengukuranTerbaru)
+                                : "Lakukan Pengukuran"}
+                            </td>
+                            <td>
+                              {dataPengukuranTerbaru !== undefined
+                                ? dataPengukuranBulanIni[dataPengukuranTerbaru][
+                                    "umurBulan"
+                                  ]
+                                : "-"}
+                            </td>
+                            <td>
+                              {dataPengukuranTerbaru !== undefined
+                                ? dataPengukuranBulanIni[dataPengukuranTerbaru][
+                                    "BeratBadan"
+                                  ]
+                                : "-"}
+                            </td>
+                            <td>
+                              {dataPengukuranTerbaru !== undefined
+                                ? dataPengukuranBulanIni[dataPengukuranTerbaru][
+                                    "TinggiBadan"
+                                  ]
+                                : "-"}
+                            </td>
+                            <td>
+                              {dataPengukuranTerbaru !== undefined
+                                ? dataPengukuranBulanIni[dataPengukuranTerbaru][
+                                    "IMT"
+                                  ]
+                                : "-"}
+                            </td>
+                            <td>
+                              {dataPengukuranTerbaru !== undefined
+                                ? dataPengukuranBulanIni[dataPengukuranTerbaru][
+                                    "PersentaseLemakTubuh"
+                                  ]
+                                : "-"}
+                            </td>
+                            <td value={key}>
+                              {" "}
+                              <OverlayTrigger
+                                overlay={
+                                  <Tooltip id="tooltip-577232198">
+                                    Pengukuran
+                                  </Tooltip>
+                                }
+                              >
+                                <Button
+                                  className="btn-simple btn-link p-1"
+                                  type="button"
+                                  value={key}
+                                  variant="primary"
+                                  onClick={mulaiPengukuran}
+                                >
+                                  Ukur
+                                  {/* <i className="fas fa-plus" value={key}></i> */}
+                                </Button>
+                              </OverlayTrigger>
+                              <OverlayTrigger
+                                overlay={
+                                  <Tooltip id="tooltip-773861645">
+                                    Detail
+                                  </Tooltip>
+                                }
+                              >
+                                <Button
+                                  value={key}
+                                  onClick={handleShowDetail}
+                                  className="btn-simple btn-link p-1"
+                                  type="button"
+                                  variant="success"
+                                >
+                                  Detail
+                                  {/* <i className="fas fa-info"></i> */}
+                                </Button>
+                              </OverlayTrigger>
+                            </td>
+                          </tr>
+                        </>
+                      );
+                    })}
+                  </tbody>
+                </Table>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
-
 export default History;

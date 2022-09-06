@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import fixfatText from "../assets/fixfatText.png";
+import fixfatText from "../assets1/fixfatText.png";
 import { Icon } from "@iconify/react";
 import { auth } from "../firebase";
 
