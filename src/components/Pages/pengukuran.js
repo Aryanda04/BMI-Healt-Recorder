@@ -83,7 +83,7 @@ const PengukuranForm = () => {
   const idPengukuran = handleDate();
   const handleKonstanta = () => {
     let sex = dataPengukuran.jenisKelamin;
-    console.log(sex);
+    // console.log(sex);
     if (sex === "1") {
       return 0.8;
     } else {
