@@ -71,189 +71,196 @@ const History = () => {
 
     navigate(`/pengukuran/${userId}`);
   };
+
   const keys = Object.keys(dataPengukuran);
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Col md="12">
-            <Card className="strpied-tabled-with-hover">
-              <Card.Header>
-                <Card.Title as="h4">Riwayat Pengukuran</Card.Title>
-                <p className="card-category">Riwayat Pengukuran Terakhir</p>
-              </Card.Header>
-              <Card.Body className="table-full-width table-responsive px-0">
-                <Table className="table-hover table-striped">
-                  <thead>
-                    <tr>
-                      <th className="border-0">No</th>
-                      <th className="border-0">Name</th>
-                      <th className="border-0">Waktu Pengukuran</th>
-                      {/* <th className="border-0">Umur (Bulan)</th> */}
-                      <th className="border-0">Berat Badan</th>
-                      <th className="border-0">Tinggi Badan</th>
-                      <th className="border-0">IMT</th>
-                      <th className="border-0">%BF</th>
-                      <th className="border-0">Utils</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Mawrizka Dwi Aryani</td>
-                      <td>05-09-2022</td>
-                      {/* <td>
+      {dataPengukuran === undefined ? (
+        "Silahkan Lakukan Pengukuran "
+      ) : (
+        <Container fluid>
+          <Row>
+            <Col md="12">
+              <Card className="strpied-tabled-with-hover">
+                <Card.Header>
+                  <Card.Title as="h4">Riwayat Pengukuran</Card.Title>
+                  <p className="card-category">Riwayat Pengukuran Terakhir</p>
+                </Card.Header>
+                <Card.Body className="table-full-width table-responsive px-0">
+                  <Table responsive="sm" className="table-hover table-striped">
+                    <thead>
+                      <tr>
+                        <th className="border-0">No</th>
+                        <th className="border-0">Name</th>
+                        <th className="border-0">Waktu Pengukuran</th>
+                        {/* <th className="border-0">Umur (Bulan)</th> */}
+                        <th className="border-0">Berat Badan</th>
+                        <th className="border-0">Tinggi Badan</th>
+                        <th className="border-0">IMT</th>
+                        <th className="border-0">%BF</th>
+                        <th className="border-0">Utils</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Mawrizka Dwi Aryani</td>
+                        <td>05-09-2022</td>
+                        {/* <td>
                         {dataPengukuranTerbaru !== undefined
                           ? dataPengukuranBulanIni[dataPengukuranTerbaru][
                               "umurBulan"
                             ]
                           : "-"}
                       </td> */}
-                      <td>16.8</td>
-                      <td>73</td>
-                      <td>21.7</td>
-                      <td>24.954</td>
-                      <td>
-                        {" "}
-                        <OverlayTrigger
-                          overlay={
-                            <Tooltip id="tooltip-577232198">Pengukuran</Tooltip>
-                          }
-                        >
-                          <Button
-                            className="btn-simple btn-link p-1"
-                            type="button"
-                            variant="primary"
-                            // onClick={mulaiPengukuran}
+                        <td>16.8</td>
+                        <td>73</td>
+                        <td>21.7</td>
+                        <td>24.954</td>
+                        <td>
+                          {" "}
+                          <OverlayTrigger
+                            overlay={
+                              <Tooltip id="tooltip-577232198">
+                                Pengukuran
+                              </Tooltip>
+                            }
                           >
-                            Ukur
-                            {/* <i className="fas fa-plus" value={key}></i> */}
-                          </Button>
-                        </OverlayTrigger>
-                        <OverlayTrigger
-                          overlay={
-                            <Tooltip id="tooltip-773861645">Detail</Tooltip>
-                          }
-                        >
-                          <Button
-                            // value={key}
-                            onClick={() => {
-                              navigate("/riwayat/dmy123");
-                            }}
-                            className="btn-simple btn-link p-1"
-                            type="button"
-                            variant="success"
+                            <Button
+                              className="btn-simple btn-link p-1"
+                              type="button"
+                              variant="primary"
+                              // onClick={mulaiPengukuran}
+                            >
+                              Ukur
+                              {/* <i className="fas fa-plus" value={key}></i> */}
+                            </Button>
+                          </OverlayTrigger>
+                          <OverlayTrigger
+                            overlay={
+                              <Tooltip id="tooltip-773861645">Detail</Tooltip>
+                            }
                           >
-                            Detail
-                            {/* <i className="fas fa-info"></i> */}
-                          </Button>
-                        </OverlayTrigger>
-                      </td>
-                    </tr>
-                    {keys.map((key, index) => {
-                      // console.log(key);
-                      const dataPengukuranBulanIni = dataPengukuran[key];
-                      const objKeys = Object.keys(dataPengukuranBulanIni).slice(
-                        0,
-                        -4
-                      );
-                      // console.log(objKeys);
-                      const dataPengukuranTerbaru = objKeys.pop();
-                      return (
-                        <>
-                          <tr>
-                            <td>{index + 2}</td>
-                            <td>{dataPengukuranBulanIni.name}</td>
-                            <td>
-                              {dataPengukuranTerbaru !== undefined
-                                ? handleWaktuPengukuran(dataPengukuranTerbaru)
-                                : "Lakukan Pengukuran"}
-                            </td>
-                            {/* <td>
+                            <Button
+                              // value={key}
+                              onClick={() => {
+                                navigate("/riwayat/dmy123");
+                              }}
+                              className="btn-simple btn-link p-1"
+                              type="button"
+                              variant="success"
+                            >
+                              Detail
+                              {/* <i className="fas fa-info"></i> */}
+                            </Button>
+                          </OverlayTrigger>
+                        </td>
+                      </tr>
+                      {keys.map((key, index) => {
+                        // console.log(key);
+                        const dataPengukuranBulanIni = dataPengukuran[key];
+                        const objKeys = Object.keys(
+                          dataPengukuranBulanIni
+                        ).slice(0, -4);
+                        // console.log(objKeys);
+                        const dataPengukuranTerbaru = objKeys.pop();
+                        console.log(dataPengukuranTerbaru);
+                        return (
+                          <>
+                            <tr>
+                              <td>{index + 2}</td>
+                              <td>{dataPengukuranBulanIni.name}</td>
+                              <td>
+                                {dataPengukuranTerbaru !== undefined
+                                  ? handleWaktuPengukuran(dataPengukuranTerbaru)
+                                  : "Lakukan Pengukuran"}
+                              </td>
+                              {/* <td>
                               {dataPengukuranTerbaru !== undefined
                                 ? dataPengukuranBulanIni[dataPengukuranTerbaru][
                                     "umurBulan"
                                   ]
                                 : "-"}
                             </td> */}
-                            <td>
-                              {dataPengukuranTerbaru !== undefined
-                                ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                                    "BeratBadan"
-                                  ]
-                                : "-"}
-                            </td>
-                            <td>
-                              {dataPengukuranTerbaru !== undefined
-                                ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                                    "TinggiBadan"
-                                  ]
-                                : "-"}
-                            </td>
-                            <td>
-                              {dataPengukuranTerbaru !== undefined
-                                ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                                    "IMT"
-                                  ]
-                                : "-"}
-                            </td>
-                            <td>
-                              {dataPengukuranTerbaru !== undefined
-                                ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                                    "PersentaseLemakTubuh"
-                                  ]
-                                : "-"}
-                            </td>
-                            <td value={key}>
-                              {" "}
-                              <OverlayTrigger
-                                overlay={
-                                  <Tooltip id="tooltip-577232198">
-                                    Pengukuran
-                                  </Tooltip>
-                                }
-                              >
-                                <Button
-                                  className="btn-simple btn-link p-1"
-                                  type="button"
-                                  value={key}
-                                  variant="primary"
-                                  onClick={mulaiPengukuran}
+                              <td>
+                                {dataPengukuranTerbaru !== undefined
+                                  ? dataPengukuranBulanIni[
+                                      dataPengukuranTerbaru
+                                    ]["BeratBadan"]
+                                  : "-"}
+                              </td>
+                              <td>
+                                {dataPengukuranTerbaru !== undefined
+                                  ? dataPengukuranBulanIni[
+                                      dataPengukuranTerbaru
+                                    ]["TinggiBadan"]
+                                  : "-"}
+                              </td>
+                              <td>
+                                {dataPengukuranTerbaru !== undefined
+                                  ? dataPengukuranBulanIni[
+                                      dataPengukuranTerbaru
+                                    ]["IMT"]
+                                  : "-"}
+                              </td>
+                              <td>
+                                {dataPengukuranTerbaru !== undefined
+                                  ? dataPengukuranBulanIni[
+                                      dataPengukuranTerbaru
+                                    ]["bodyFatPercentage"]
+                                  : "-"}
+                              </td>
+                              <td value={key}>
+                                {" "}
+                                <OverlayTrigger
+                                  overlay={
+                                    <Tooltip id="tooltip-577232198">
+                                      Pengukuran
+                                    </Tooltip>
+                                  }
                                 >
-                                  Ukur
-                                  {/* <i className="fas fa-plus" value={key}></i> */}
-                                </Button>
-                              </OverlayTrigger>
-                              <OverlayTrigger
-                                overlay={
-                                  <Tooltip id="tooltip-773861645">
+                                  <Button
+                                    className="btn-simple btn-link p-1"
+                                    type="button"
+                                    value={key}
+                                    variant="primary"
+                                    onClick={mulaiPengukuran}
+                                  >
+                                    Ukur
+                                    {/* <i className="fas fa-plus" value={key}></i> */}
+                                  </Button>
+                                </OverlayTrigger>
+                                <OverlayTrigger
+                                  overlay={
+                                    <Tooltip id="tooltip-773861645">
+                                      Detail
+                                    </Tooltip>
+                                  }
+                                >
+                                  <Button
+                                    value={key}
+                                    onClick={handleShowDetail}
+                                    className="btn-simple btn-link p-1"
+                                    type="button"
+                                    variant="success"
+                                  >
                                     Detail
-                                  </Tooltip>
-                                }
-                              >
-                                <Button
-                                  value={key}
-                                  onClick={handleShowDetail}
-                                  className="btn-simple btn-link p-1"
-                                  type="button"
-                                  variant="success"
-                                >
-                                  Detail
-                                  {/* <i className="fas fa-info"></i> */}
-                                </Button>
-                              </OverlayTrigger>
-                            </td>
-                          </tr>
-                        </>
-                      );
-                    })}
-                  </tbody>
-                </Table>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+                                    {/* <i className="fas fa-info"></i> */}
+                                  </Button>
+                                </OverlayTrigger>
+                              </td>
+                            </tr>
+                          </>
+                        );
+                      })}
+                    </tbody>
+                  </Table>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      )}
     </>
   );
 };

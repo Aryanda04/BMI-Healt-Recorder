@@ -275,7 +275,7 @@ const PengukuranForm = () => {
                 </td>
                 <td>
                   {dataPengukuran[idPengukuran] !== undefined
-                    ? dataPengukuran[idPengukuran]["bodyFatPercentage"]
+                    ? dataPengukuran[idPengukuran]["BeratBadan"]
                     : "Lakukan Pengukuran"}
                 </td>
               </tr>
