@@ -49,8 +49,9 @@ export default function GrafikTBPerempuan() {
             label: "-3 SD",
             fill: false,
 
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
+            backgroundColor: "red",
+            borderColor: "red",
+            borderWidth: 0.5,
             data: [
               76.8, 77.5, 78.1, 78.8, 79.5, 80.1, 80.7, 81.3, 81.9, 82.5, 83.1,
               83.6, 84.2, 84.7, 85.3, 85.8, 86.3, 86.8, 87.4, 87.9, 88.4, 88.9,
@@ -60,8 +61,9 @@ export default function GrafikTBPerempuan() {
           },
           {
             label: "-2 SD",
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
+            backgroundColor: "red",
+            borderColor: "red",
+            borderWidth: 0.5,
             data: [
               80, 80.8, 81.5, 82.2, 82.9, 83.6, 84.3, 84.9, 85.6, 86.2, 86.8,
               87.4, 88, 88.6, 89.2, 89.8, 90.4, 90.9, 91.5, 92, 92.5, 93.1,
@@ -73,8 +75,9 @@ export default function GrafikTBPerempuan() {
           {
             label: "-1 SD",
             fill: false,
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
+            backgroundColor: "yellow",
+            borderColor: "yellow",
+            borderWidth: 0.5,
             data: [
               83.3, 84.1, 84.9, 85.7, 86.4, 87.1, 87.9, 88.6, 89.3, 89.9, 90.6,
               91.2, 91.9, 92.5, 93.1, 93.8, 94.4, 95, 95.6, 96.2, 96.7, 97.3,
@@ -84,8 +87,9 @@ export default function GrafikTBPerempuan() {
           },
           {
             label: "Standar",
-            backgroundColor: "#fff",
-            borderColor: "#fff",
+            backgroundColor: "green",
+            borderColor: "green",
+            borderWidth: 0.5,
             data: [
               86.6, 87.4, 88.3, 89.1, 89.9, 90.7, 91.4, 92.2, 92.9, 93.6, 94.4,
               95.1, 95.7, 96.4, 97.1, 97.7, 98.4, 99, 99.7, 100.3, 100.9, 101.5,
@@ -97,8 +101,9 @@ export default function GrafikTBPerempuan() {
           {
             label: "+1 SD",
             fill: false,
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
+            backgroundColor: "yellow",
+            borderColor: "yellow",
+            borderWidth: 0.5,
             data: [
               89.9, 90.8, 91.7, 92.5, 93.4, 94.2, 95, 95.8, 96.6, 97.4, 98.1,
               98.9, 99.6, 100.3, 101, 101.7, 102.4, 103.1, 103.8, 104.5, 105.1,
@@ -109,8 +114,9 @@ export default function GrafikTBPerempuan() {
           {
             label: "+2 SD",
             fill: false,
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
+            backgroundColor: "red",
+            borderColor: "red",
+            borderWidth: 0.5,
             data: [
               93.1, 94.1, 95, 96, 96.9, 97.7, 98.6, 99.4, 100.3, 101.1, 101.9,
               102.7, 103.4, 104.2, 105, 105.7, 106.4, 107.2, 107.9, 108.6,
@@ -121,8 +127,9 @@ export default function GrafikTBPerempuan() {
           {
             label: "+3 SD",
             fill: false,
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
+            backgroundColor: "red",
+            borderColor: "red",
+            borderWidth: 0.5,
             data: [
               96.4, 97.4, 98.4, 99.4, 100.3, 101.3, 102.2, 103.1, 103.9, 104.8,
               105.6, 106.5, 107.3, 108.1, 108.9, 109.7, 110.5, 111.2, 112,
@@ -130,11 +137,103 @@ export default function GrafikTBPerempuan() {
               119.1, 119.8, 120.4, 121.1, 121.8, 122.4, 123.1, 123.7,
             ],
           },
+          {
+            label: "Pengukuran",
+            fill: false,
+            backgroundColor: "purple",
+            borderColor: "purple",
+
+            borderWidth: 1,
+            data: [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              72,
+              72.4,
+              72.8,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+            ],
+          },
+          {
+            label: "Prediksi",
+            fill: false,
+            backgroundColor: "pink",
+            borderColor: "pink",
+
+            borderWidth: 1,
+            data: [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              72,
+              72.4,
+              72.8,
+              73,
+              73.4,
+              74,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+            ],
+          },
         ],
       },
 
       options: {
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         responsive: true,
         title: {
           display: false,
@@ -143,30 +242,28 @@ export default function GrafikTBPerempuan() {
         },
         legend: {
           labels: {
-            fontColor: "white",
+            fontColor: "black",
           },
-          align: "end",
+          align: "start",
           position: "bottom",
         },
-        tooltips: {
-          mode: "index",
-          intersect: false,
-        },
-        hover: {
-          mode: "nearest",
-          intersect: false,
+
+        elements: {
+          point: {
+            radius: 0,
+          },
         },
         scales: {
           xAxes: [
             {
               ticks: {
-                fontColor: "white",
+                fontColor: "black",
               },
               display: true,
               scaleLabel: {
-                display: false,
-                labelString: "Year",
-                fontColor: "white",
+                display: true,
+                labelString: "Month",
+                fontColor: "black",
               },
               gridLines: {
                 display: false,
@@ -182,18 +279,18 @@ export default function GrafikTBPerempuan() {
           yAxes: [
             {
               ticks: {
-                fontColor: "rgba(255,255,255,.7)",
+                fontColor: "black",
               },
               display: true,
               scaleLabel: {
-                display: false,
-                labelString: "KiloGram",
-                fontColor: "white",
+                display: true,
+                labelString: "Cm",
+                fontColor: "black",
               },
               gridLines: {
                 borderDash: [3],
                 borderDashOffset: [3],
-                drawBorder: false,
+                drawBorder: true,
                 color: "rgba(255, 255, 255, 0.15)",
                 zeroLineColor: "rgba(33, 37, 41, 0)",
                 zeroLineBorderDash: [2],
@@ -209,26 +306,7 @@ export default function GrafikTBPerempuan() {
   }, []);
   return (
     <>
-      <div className="grafikLakiContainer">
-        <div className="">
-          <div className="">
-            <div className="">
-              <h6 className="">
-                Standar Tinggi Badan anak Perempuan menurut Umur
-              </h6>
-              <h2 className="text-white text-xl font-semibold">
-                Grafik Cm/Bulan
-              </h2>
-            </div>
-          </div>
-        </div>
-        <div className="p-4 flex-auto">
-          {/* Chart */}
-          <div className="relative h-350-px">
-            <canvas id="grafikTinggiBadan"></canvas>
-          </div>
-        </div>
-      </div>
+      <canvas id="grafikTinggiBadan"></canvas>
     </>
   );
 }

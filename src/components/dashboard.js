@@ -9,6 +9,7 @@ import ProfilForm from "./Form/profilForm";
 import Blank from "./Pages/blank";
 import Detail from "./Pages/detail";
 import Pengukuran from "./Pages/pengukuran";
+import DumyDetail from "./Pages/DummyDetail";
 
 function Dashboard() {
   return (
@@ -20,6 +21,8 @@ function Dashboard() {
             <Route path="/informasi" element={<Profil />} />
             <Route path="/riwayat" element={<History />} />
             <Route path="/riwayat/:slug" element={<Detail />} />
+            <Route path="/riwayat/dmy123" element={<DumyDetail />} />
+
             <Route path="/pengukuran" element={<PengukuranForm />} />
             <Route path="/pengukuran/:slug" element={<Pengukuran />} />
             <Route path="/formprofil" element={<ProfilForm />} />

@@ -49,8 +49,9 @@ export default function GrafikIMTPerempuan() {
             label: "-3 SD",
             fill: false,
 
-            backgroundColor: "	#880808",
-            borderColor: "	#880808",
+            backgroundColor: "red",
+            borderColor: "red",
+            borderWidth: 0.5,
             data: [
               12.4, 12.3, 12.3, 12.3, 12.3, 12.3, 12.2, 12.2, 12.2, 12.2, 12.1,
               12.1, 12.1, 12.1, 12, 12, 12, 12, 11.9, 11.9, 11.9, 11.9, 11.8,
@@ -60,8 +61,9 @@ export default function GrafikIMTPerempuan() {
           },
           {
             label: "-2 SD",
-            backgroundColor: "#880808",
-            borderColor: "#880808",
+            backgroundColor: "red",
+            borderColor: "red",
+            borderWidth: 0.5,
             data: [
               13.3, 13.3, 13.3, 13.3, 13.2, 13.2, 13.2, 13.2, 13.1, 13.1, 13.1,
               13.1, 13.1, 13, 13, 13, 13, 12.9, 12.9, 12.9, 12.9, 12.9, 12.8,
@@ -73,8 +75,9 @@ export default function GrafikIMTPerempuan() {
           {
             label: "-1 SD",
             fill: false,
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
+            backgroundColor: "yellow",
+            borderColor: "yellow",
+            borderWidth: 0.5,
             data: [
               14.4, 14.4, 14.4, 14.3, 14.3, 14.3, 14.3, 14.3, 14.2, 14.2, 14.2,
               14.2, 14.1, 14.1, 14.1, 14.1, 14.1, 14, 14, 14, 14, 14, 14, 14,
@@ -84,8 +87,9 @@ export default function GrafikIMTPerempuan() {
           },
           {
             label: "Standar",
-            backgroundColor: "#fff",
-            borderColor: "#fff",
+            backgroundColor: "green",
+            borderColor: "green",
+            borderWidth: 0.5,
             data: [
               15.7, 15.6, 15.6, 15.6, 15.6, 15.5, 15.5, 15.5, 15.5, 15.4, 15.4,
               15.4, 15.4, 15.4, 15.3, 15.3, 15.3, 15.3, 15.3, 15.3, 15.3, 15.3,
@@ -97,8 +101,9 @@ export default function GrafikIMTPerempuan() {
           {
             label: "+1 SD",
             fill: false,
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
+            backgroundColor: "yellow",
+            borderColor: "yellow",
+            borderWidth: 0.5,
             data: [
               17.1, 17, 17, 17, 17, 16.9, 16.9, 16.9, 16.9, 16.8, 16.8, 16.8,
               16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8,
@@ -109,8 +114,10 @@ export default function GrafikIMTPerempuan() {
           {
             label: "+2 SD",
             fill: false,
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
+            backgroundColor: "red",
+            borderColor: "red",
+
+            borderWidth: 0.5,
             data: [
               18.7, 18.7, 18.6, 18.6, 18.6, 18.5, 18.5, 18.5, 18.5, 18.5, 18.4,
               18.4, 18.4, 18.4, 18.4, 18.4, 18.4, 18.4, 18.4, 18.5, 18.5, 18.5,
@@ -121,8 +128,10 @@ export default function GrafikIMTPerempuan() {
           {
             label: "+3 SD",
             fill: false,
-            backgroundColor: "	#880808",
-            borderColor: "	#880808",
+            backgroundColor: "red",
+            borderColor: "red",
+
+            borderWidth: 0.5,
             data: [
               20.6, 20.6, 20.5, 20.5, 20.4, 20.4, 20.4, 20.4, 20.3, 20.3, 20.3,
               20.3, 20.3, 20.3, 20.3, 20.3, 20.4, 20.4, 20.4, 20.4, 20.5, 20.5,
@@ -130,11 +139,103 @@ export default function GrafikIMTPerempuan() {
               21, 21, 21.1,
             ],
           },
+          {
+            label: "Pengukuran",
+            fill: false,
+            backgroundColor: "purple",
+            borderColor: "purple",
+
+            borderWidth: 1,
+            data: [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.2,
+              21.5,
+              21.7,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+            ],
+          },
+          {
+            label: "Prediksi",
+            fill: false,
+            backgroundColor: "pink",
+            borderColor: "pink",
+
+            borderWidth: 1,
+            data: [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.2,
+              21.5,
+              21.7,
+              22,
+              22.5,
+              22.8,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+            ],
+          },
         ],
       },
 
       options: {
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         responsive: true,
         title: {
           display: false,
@@ -143,30 +244,28 @@ export default function GrafikIMTPerempuan() {
         },
         legend: {
           labels: {
-            fontColor: "white",
+            fontColor: "black",
           },
-          align: "end",
+          align: "start",
           position: "bottom",
         },
-        tooltips: {
-          mode: "index",
-          intersect: false,
-        },
-        hover: {
-          mode: "nearest",
-          intersect: false,
+
+        elements: {
+          point: {
+            radius: 0,
+          },
         },
         scales: {
           xAxes: [
             {
               ticks: {
-                fontColor: "white",
+                fontColor: "black",
               },
               display: true,
               scaleLabel: {
-                display: false,
-                labelString: "Year",
-                fontColor: "white",
+                display: true,
+                labelString: "Month",
+                fontColor: "black",
               },
               gridLines: {
                 display: false,
@@ -182,18 +281,18 @@ export default function GrafikIMTPerempuan() {
           yAxes: [
             {
               ticks: {
-                fontColor: "rgba(255,255,255,.7)",
+                fontColor: "black",
               },
               display: true,
               scaleLabel: {
-                display: false,
+                display: true,
                 labelString: "IMT",
-                fontColor: "white",
+                fontColor: "black",
               },
               gridLines: {
                 borderDash: [3],
                 borderDashOffset: [3],
-                drawBorder: false,
+                drawBorder: true,
                 color: "rgba(255, 255, 255, 0.15)",
                 zeroLineColor: "rgba(33, 37, 41, 0)",
                 zeroLineBorderDash: [2],
@@ -209,24 +308,7 @@ export default function GrafikIMTPerempuan() {
   }, []);
   return (
     <>
-      <div className="grafikLakiContainer">
-        <div className="">
-          <div className="">
-            <div className="">
-              <h6 className="">Standar IMT anak Perempuan menurut Umur</h6>
-              <h2 className="text-white text-xl font-semibold">
-                Grafik IMT/Bulan
-              </h2>
-            </div>
-          </div>
-        </div>
-        <div className="p-4 flex-auto">
-          {/* Chart */}
-          <div className="relative h-350-px">
-            <canvas id="grafikIMT"></canvas>
-          </div>
-        </div>
-      </div>
+      <canvas id="grafikIMT"></canvas>
     </>
   );
 }
