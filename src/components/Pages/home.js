@@ -5,14 +5,24 @@ import RiwayatPengukuranCard from "../Card/riwayatPengukuranCard";
 import Highcharts from "highcharts";
 import Maps from "../Card/maps";
 import MapsObesitas from "../Card/mapsBB";
+import Carousel from "react-bootstrap/Carousel";
 
 const Home = () => {
   return (
     <>
       <div className="dashboardContainer">
-        <h1>Selamat Datang</h1>
-        <Maps />
-        <MapsObesitas />
+        <Carousel>
+          <Carousel.Item>
+            <div className="container">
+              <Maps />
+            </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <div className="container">
+              <MapsObesitas />
+            </div>
+          </Carousel.Item>
+        </Carousel>
       </div>
     </>
   );

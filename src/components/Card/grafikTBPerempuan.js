@@ -241,6 +241,8 @@ export default function GrafikTBPerempuan() {
           fontColor: "white",
         },
         legend: {
+          display: false,
+
           labels: {
             fontColor: "black",
           },
