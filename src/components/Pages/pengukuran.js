@@ -134,12 +134,43 @@ const PengukuranForm = () => {
 
     return FP;
   };
+  const bfpUnderTen = () => {
+    let height = parseInt(dataPengukuran[idPengukuran]["TinggiBadan"]);
+    let Impedance = parseInt(dataPengukuran[idPengukuran]["Impedansi"]);
+
+    let lbm = 4.83 * (0.64 * ((height * height) / Impedance));
+    return lbm;
+  };
+  const anotherBfp = () => {
+    let height = parseInt(dataPengukuran[idPengukuran]["TinggiBadan"]);
+    let weight = parseInt(dataPengukuran[idPengukuran]["BeratBadan"]);
+    let Impedance = parseInt(dataPengukuran[idPengukuran]["Impedansi"]);
+    let sex = dataPengukuran.jenisKelamin;
+    let koefSex;
+    const age = handleAge();
+
+    if (sex === "1") {
+      koefSex = 1;
+    } else {
+      koefSex = 2;
+    }
+
+    let lbm =
+      (0.36 * (height * height)) / Impedance +
+      0.16 * height +
+      0.29 * weight -
+      0.13 * age +
+      4.8 * koefSex -
+      6.83;
+    return lbm;
+  };
 
   const writeUserData = (e) => {
     const userId = slug;
     setDataUserId(userId);
     e.preventDefault();
-    let bodyFatPercentage = bfp();
+    let bodyFatPercentage = anotherBfp();
+    let bodyFatPercentage2 = bfpUnderTen();
     let BeratBadan = dataPengukuran[idPengukuran]["BeratBadan"];
     let TinggiBadan = dataPengukuran[idPengukuran]["TinggiBadan"];
     let Impedansi = dataPengukuran[idPengukuran]["Impedansi"];
@@ -156,7 +187,7 @@ const PengukuranForm = () => {
         TinggiBadan: TinggiBadan,
         Impedansi: Impedansi,
         IMT: IMT,
-
+        bodyFatPercentage2: bodyFatPercentage2,
         bodyFatPercentage: bodyFatPercentage,
       }
     );
