@@ -248,6 +248,7 @@ export default function GrafikBBPerempuan() {
           fontColor: "white",
         },
         legend: {
+          display: false,
           labels: {
             fontColor: "black",
           },

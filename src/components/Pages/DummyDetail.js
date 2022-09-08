@@ -139,7 +139,7 @@ const DumyDetail = () => {
         </Card.Body>
         <Card.Footer>
           <div className="legend">
-            Grafik simpangan baku tinggi badan anak perempuan usia 25-60 bulan
+            Grafik simpangan baku IMT anak perempuan usia 25-60 bulan
             {/* <i className="fas fa-circle text-info"></i>
                   Open <i className="fas fa-circle text-danger"></i>
                   Click <i className="fas fa-circle text-warning"></i>

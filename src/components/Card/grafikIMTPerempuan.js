@@ -243,6 +243,8 @@ export default function GrafikIMTPerempuan() {
           fontColor: "white",
         },
         legend: {
+          display: false,
+
           labels: {
             fontColor: "black",
           },
