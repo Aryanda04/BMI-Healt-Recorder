@@ -150,7 +150,7 @@ export default function GrafikBBPerempuan() {
             backgroundColor: "purple",
             borderColor: "purple",
 
-            borderWidth: 1,
+            borderWidth: 2,
             data: [
               null,
               null,
@@ -196,7 +196,7 @@ export default function GrafikBBPerempuan() {
             backgroundColor: "pink",
             borderColor: "pink",
 
-            borderWidth: 1,
+            borderWidth: 2,
             data: [
               null,
               null,

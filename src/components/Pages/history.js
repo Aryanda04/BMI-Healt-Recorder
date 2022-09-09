@@ -87,7 +87,11 @@ const History = () => {
                   <p className="card-category">Riwayat Pengukuran Terakhir</p>
                 </Card.Header>
                 <Card.Body className="table-full-width table-responsive px-0">
-                  <Table responsive="sm" className="table-hover table-striped">
+                  <Table
+                    size="sm"
+                    responsive="xl"
+                    className="table-hover table-striped"
+                  >
                     <thead>
                       <tr>
                         <th className="border-0">No</th>
@@ -108,13 +112,6 @@ const History = () => {
                         <td>1</td>
                         <td>Mawrizka Dwi Aryani</td>
                         <td>05-09-2022</td>
-                        {/* <td>
-                        {dataPengukuranTerbaru !== undefined
-                          ? dataPengukuranBulanIni[dataPengukuranTerbaru][
-                              "umurBulan"
-                            ]
-                          : "-"}
-                      </td> */}
                         <td>16.8</td>
                         <td>73</td>
                         <td>21.7</td>
@@ -133,10 +130,8 @@ const History = () => {
                               className="btn-simple btn-link p-1"
                               type="button"
                               variant="primary"
-                              // onClick={mulaiPengukuran}
                             >
                               Ukur
-                              {/* <i className="fas fa-plus" value={key}></i> */}
                             </Button>
                           </OverlayTrigger>
                           <OverlayTrigger
@@ -154,7 +149,6 @@ const History = () => {
                               variant="success"
                             >
                               Detail
-                              {/* <i className="fas fa-info"></i> */}
                             </Button>
                           </OverlayTrigger>
                         </td>
