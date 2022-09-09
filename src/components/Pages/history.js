@@ -97,6 +97,8 @@ const History = () => {
                         <th className="border-0">Berat Badan</th>
                         <th className="border-0">Tinggi Badan</th>
                         <th className="border-0">IMT</th>
+                        <th className="border-0">Impedansi</th>
+
                         <th className="border-0">%BF</th>
                         <th className="border-0">Utils</th>
                       </tr>
@@ -116,6 +118,7 @@ const History = () => {
                         <td>16.8</td>
                         <td>73</td>
                         <td>21.7</td>
+                        <td>723.7</td>
                         <td>24.954</td>
                         <td>
                           {" "}
@@ -207,7 +210,14 @@ const History = () => {
                                 {dataPengukuranTerbaru !== undefined
                                   ? dataPengukuranBulanIni[
                                       dataPengukuranTerbaru
-                                    ]["bodyFatPercentage"]
+                                    ]["Impedansi"]
+                                  : "-"}
+                              </td>
+                              <td>
+                                {dataPengukuranTerbaru !== undefined
+                                  ? dataPengukuranBulanIni[
+                                      dataPengukuranTerbaru
+                                    ]["bodyFatPercentage"].toFixed(2)
                                   : "-"}
                               </td>
                               <td value={key}>

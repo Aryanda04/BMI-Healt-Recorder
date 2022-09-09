@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { auth } from "../../firebase";
 import { NavLink } from "react-router-dom";
+import fixfatText from "../../assets/img/fixfatText.png";
 
 import { Button, Nav } from "react-bootstrap";
 
@@ -86,12 +87,12 @@ const Sidebar = () => {
             className="simple-text logo-mini mx-1"
           >
             <div className="logo-img">
-              {/* <img src={require("assets/img/reactlogo.png")} alt="..." /> */}
+              <img src={fixfatText} alt="..." />
             </div>
           </a>
-          <a className="simple-text" href="http://www.creative-tim.com">
+          {/* <a className="simple-text" href="http://www.creative-tim.com">
             Fix Fat
-          </a>
+          </a> */}
         </div>
         <Nav>
           {sidebarNavItems.map((prop, key) => {

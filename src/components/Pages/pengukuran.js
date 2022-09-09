@@ -103,7 +103,7 @@ const PengukuranForm = () => {
     const dateBirth = parseInt(bornYear * 12 + bornMonth);
     console.log(dateNow);
     console.log(dateBirth);
-    return (dateNow - dateBirth) / 100;
+    return (dateNow - dateBirth) / 1200;
     //100 untuk menyesuaikan ada tambahan 0 pada bulan dengan char 1
   };
   const handleLBMCoeff = () => {
@@ -111,7 +111,8 @@ const PengukuranForm = () => {
     const weight = parseInt(dataPengukuran[idPengukuran]["BeratBadan"]);
     const impedance = parseInt(dataPengukuran[idPengukuran]["Impedansi"]);
     const age = handleAge();
-    console.log(age);
+    // console.log(age);
+
     let lbm = ((height * 9.058) / 100) * handleAge(height / 100);
     lbm += weight * 0.32 + 12.226;
     lbm -= impedance * 0.0068;
@@ -148,6 +149,7 @@ const PengukuranForm = () => {
     let sex = dataPengukuran.jenisKelamin;
     let koefSex;
     const age = handleAge();
+    console.log(age);
 
     if (sex === "1") {
       koefSex = 1;
@@ -161,7 +163,8 @@ const PengukuranForm = () => {
       0.29 * weight -
       0.13 * age +
       4.8 * koefSex -
-      6.83;
+      7.83;
+    //this tanda
     return lbm;
   };
 
@@ -275,7 +278,7 @@ const PengukuranForm = () => {
                 </td>
                 <td>
                   {dataPengukuran[idPengukuran] !== undefined
-                    ? dataPengukuran[idPengukuran]["BeratBadan"]
+                    ? dataPengukuran[idPengukuran]["bodyFatPercentage"]
                     : "Lakukan Pengukuran"}
                 </td>
               </tr>

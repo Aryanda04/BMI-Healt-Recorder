@@ -79,6 +79,7 @@ const Detail = () => {
         <Card.Header as="h3">
           Riwayat Pengukuran {dataPengukuran.name}
         </Card.Header>
+        <h2>YYYY/MM/DD : {dataPengukuran.tanggal_lahir}</h2>
         <Card.Body>
           <Table striped bordered hover>
             <thead>
@@ -88,6 +89,7 @@ const Detail = () => {
                 <th>Berat Badan</th>
                 <th>Tinggi Badan</th>
                 <th>IMT</th>
+                <th>Impedansi</th>
                 <th>%BF</th>
               </tr>
             </thead>
@@ -106,6 +108,7 @@ const Detail = () => {
                       <td>{dataPengukuranUser.BeratBadan}</td>
                       <td>{dataPengukuranUser.TinggiBadan}</td>
                       <td>{dataPengukuranUser.IMT}</td>
+                      <td>{dataPengukuranUser.Impedansi}</td>
                       <td>{dataPengukuranUser.bodyFatPercentage}</td>
                     </tr>
                   </>
